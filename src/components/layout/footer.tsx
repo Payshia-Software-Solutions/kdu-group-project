@@ -6,9 +6,11 @@ export default function Footer() {
   return (
     <footer className="bg-background border-t">
       <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row md:px-6">
-        <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} KDU Group Sri Lanka. All rights reserved.
-        </p>
+        <div className="flex flex-col sm:flex-row items-center gap-2 text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} KDU Group Sri Lanka. All rights reserved.</p>
+          <span className="hidden sm:inline">|</span>
+          <p>Powered by Payshia software solutions</p>
+        </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" asChild>
             <Link href="#" aria-label="Facebook page">
