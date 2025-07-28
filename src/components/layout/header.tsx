@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ChevronDown, Factory, Utensils, Droplet, Zap, Gem, Building2, Globe, Briefcase, Info, GitMerge } from "lucide-react";
+import { Menu, X, ChevronDown, Briefcase, Info, GitMerge, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { sectorLinks } from "@/lib/sector-data";
 
 const topNavLinks = [
   { href: "#", label: "Announcements" },
@@ -31,33 +32,23 @@ const mainNavLinks = [
     { href: "/contact", label: "Contact Us" },
 ];
 
-const sectorLinks = [
-    {href: "/tea-factories", label: "Tea Factories", icon: <Factory className="w-5 h-5 text-primary" />},
-    {href: "/hospitality", label: "Hospitality", icon: <Utensils className="w-5 h-5 text-primary" />},
-    {href: "/petrolium", label: "Petrolium", icon: <Droplet className="w-5 h-5 text-primary" />},
-    {href: "/hydro-power", label: "Hydro Power", icon: <Zap className="w-5 h-5 text-primary" />},
-    {href: "/gem-mining", label: "Gem Mining", icon: <Gem className="w-5 h-5 text-primary" />},
-    {href: "/retail", label: "Retail Manufacture and Trading", icon: <Building2 className="w-5 h-5 text-primary" />},
-    {href: "/sectors", label: "All Sectors", icon: <GitMerge className="w-5 h-5 text-primary" />},
-];
-
 const globalLinks = [
-    {href: "/kdu-singapore", label: "KDU Singapore", icon: <Globe className="w-5 h-5 text-primary" />},
+    {href: "/kdu-singapore", label: "KDU Singapore", icon: Globe},
 ]
 
 const investorLinks = [
-    {href: "#", label: "Financials", icon: <Briefcase className="w-5 h-5 text-primary" />},
+    {href: "#", label: "Financials", icon: Briefcase},
 ]
 
 const aboutLinks = [
-    {href: "#", label: "Our Story", icon: <Info className="w-5 h-5 text-primary" />},
+    {href: "#", label: "Our Story", icon: Info},
 ]
 
 
 const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | 'about' }) => {
     const getLinks = (type: 'sectors' | 'global' | 'investor' | 'about') => {
         switch (type) {
-            case 'sectors': return sectorLinks;
+            case 'sectors': return sectorLinks.map(l => ({...l, icon: l.icon}));
             case 'global': return globalLinks;
             case 'investor': return investorLinks;
             case 'about': return aboutLinks;
@@ -69,14 +60,17 @@ const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | '
 
     return (
         <div className={cn(isGrid ? "w-96 p-4 grid grid-cols-2 gap-4" : "w-64 p-2")}>
-            {links.map(link => (
-                <DropdownMenuItem key={link.label} asChild>
-                    <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted cursor-pointer w-full">
-                        {link.icon}
-                        <span>{link.label}</span>
-                    </Link>
-                </DropdownMenuItem>
-            ))}
+            {links.map(link => {
+                const Icon = link.icon;
+                return (
+                    <DropdownMenuItem key={link.label} asChild>
+                        <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted cursor-pointer w-full">
+                           <Icon className="w-5 h-5 text-primary" />
+                           <span>{link.label}</span>
+                        </Link>
+                    </DropdownMenuItem>
+                )
+            })}
         </div>
     )
 }
