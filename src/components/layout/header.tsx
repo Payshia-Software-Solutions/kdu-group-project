@@ -179,9 +179,8 @@ export default function Header() {
       {/* Main Navigation */}
       <div className="border-b border-border/40">
         <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-          <Link href="/" className="flex flex-col items-center gap-2">
+          <Link href="/">
             <Image src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" alt="KDU Group Logo" width={50} height={50} />
-            <span className="text-xs font-bold font-headline text-gray-700">KDU GROUP</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-base font-medium text-gray-700">
             {mainNavLinks.map((link) => (
@@ -199,9 +198,8 @@ export default function Header() {
               <SheetContent side="left" className="bg-white">
                 <div className="flex flex-col p-6">
                   <div className="flex justify-between items-center mb-8">
-                      <Link href="/" onClick={() => setSheetOpen(false)} className="flex items-center gap-2">
+                      <Link href="/" onClick={() => setSheetOpen(false)}>
                           <Image src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" alt="KDU Group Logo" width={40} height={40} />
-                          <span className="text-lg font-bold font-headline">KDU Group</span>
                       </Link>
                       <Button variant="ghost" size="icon" onClick={() => setSheetOpen(false)}>
                           <X className="h-6 w-6" />
