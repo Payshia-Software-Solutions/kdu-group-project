@@ -32,7 +32,7 @@ export default function Hero() {
             <div className="mb-4">
                 <Image src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" alt="KDU Group Logo" width={100} height={100} />
             </div>
-            <h1 className="text-6xl font-bold font-headline sm:text-7xl md:text-8xl drop-shadow-lg">
+            <h1 className="text-5xl font-bold font-headline sm:text-6xl md:text-7xl drop-shadow-lg">
               KDU GROUP
             </h1>
             <div className="mt-8 flex flex-col items-start gap-4">
