@@ -8,6 +8,7 @@ import { MotionDiv } from '@/components/ui/motion';
 import { Users, Target, Milestone, HeartHandshake, Lightbulb, TrendingUp } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import Breadcrumb from '@/components/layout/breadcrumb';
+import { cn } from '@/lib/utils';
 
 const timelineEvents = [
   { year: "1978", event: "Founded K.D.U. & Sons, starting with a single filling station." },
