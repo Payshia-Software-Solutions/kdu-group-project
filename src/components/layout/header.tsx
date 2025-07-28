@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Factory, Utensils, Droplet, Zap, Gem, Building2, Globe, Briefcase, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const topNavLinks = [
   { href: "#", label: "Announcements" },
@@ -22,20 +23,67 @@ const topNavLinks = [
 ];
 
 const mainNavLinks = [
-    { href: "#", label: "Global", dropdown: [{href: "/kdu-singapore", label: "KDU Singapore"}] },
-    { href: "#", label: "Sectors", dropdown: [
-        {href: "/tea-factories", label: "Tea Factories"},
-        {href: "/hospitality", label: "Hospitality"},
-        {href: "/petrolium", label: "Petrolium"},
-        {href: "/hydro-power", label: "Hydro Power"},
-        {href: "/gem-mining", label: "Gem Mining"},
-        {href: "/retail", label: "Retail Manufacture and Trading"},
-    ] },
+    { href: "#", label: "Global", dropdown: 'global' },
+    { href: "#", label: "Sectors", dropdown: 'sectors' },
     { href: "#", label: "Community & Environment" },
-    { href: "#", label: "Investor Relations", dropdown: [{href: "#", label: "Financials"}] },
-    { href: "#", label: "About Us", dropdown: [{href: "#", label: "Our Story"}] },
+    { href: "#", label: "Investor Relations", dropdown: 'investor' },
+    { href: "#", label: "About Us", dropdown: 'about' },
     { href: "#contact", label: "Contact Us" },
 ];
+
+const sectorLinks = [
+    {href: "/tea-factories", label: "Tea Factories", icon: <Factory className="w-5 h-5 text-primary" />},
+    {href: "/hospitality", label: "Hospitality", icon: <Utensils className="w-5 h-5 text-primary" />},
+    {href: "/petrolium", label: "Petrolium", icon: <Droplet className="w-5 h-5 text-primary" />},
+    {href: "/hydro-power", label: "Hydro Power", icon: <Zap className="w-5 h-5 text-primary" />},
+    {href: "/gem-mining", label: "Gem Mining", icon: <Gem className="w-5 h-5 text-primary" />},
+    {href: "/retail", label: "Retail Manufacture and Trading", icon: <Building2 className="w-5 h-5 text-primary" />},
+];
+
+const globalLinks = [
+    {href: "/kdu-singapore", label: "KDU Singapore", icon: <Globe className="w-5 h-5 text-primary" />},
+]
+
+const investorLinks = [
+    {href: "#", label: "Financials", icon: <Briefcase className="w-5 h-5 text-primary" />},
+]
+
+const aboutLinks = [
+    {href: "#", label: "Our Story", icon: <Info className="w-5 h-5 text-primary" />},
+]
+
+
+const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | 'about' }) => {
+    if (type === 'sectors') {
+        return (
+            <div className="w-96 p-4 grid grid-cols-2 gap-4">
+                {sectorLinks.map(link => (
+                    <DropdownMenuItem key={link.label} asChild>
+                        <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted">
+                            {link.icon}
+                            <span>{link.label}</span>
+                        </Link>
+                    </DropdownMenuItem>
+                ))}
+            </div>
+        )
+    }
+
+    const links = type === 'global' ? globalLinks : type === 'investor' ? investorLinks : aboutLinks;
+
+    return (
+        <div className="w-64 p-2">
+            {links.map(link => (
+                <DropdownMenuItem key={link.label} asChild>
+                    <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted">
+                        {link.icon}
+                        <span>{link.label}</span>
+                    </Link>
+                </DropdownMenuItem>
+            ))}
+        </div>
+    )
+}
 
 
 export default function Header() {
@@ -46,17 +94,13 @@ export default function Header() {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-1 hover:bg-transparent hover:text-primary focus:bg-transparent focus:text-primary active:bg-transparent p-0 h-auto">
+            <Button variant="ghost" className="flex items-center gap-1 hover:bg-transparent hover:text-primary focus:bg-transparent focus:text-primary active:bg-transparent p-0 h-auto data-[state=open]:text-primary">
               {link.label}
-              <ChevronDown className="h-4 w-4" />
+              <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            {link.dropdown.map((item) => (
-              <DropdownMenuItem key={item.label} asChild>
-                <Link href={item.href}>{item.label}</Link>
-              </DropdownMenuItem>
-            ))}
+          <DropdownMenuContent className="mt-2">
+            <DropdownContent type={link.dropdown as any} />
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -66,6 +110,58 @@ export default function Header() {
         href={link.href}
         className="transition-colors hover:text-primary focus:text-primary"
         onClick={() => isMobile && setSheetOpen(false)}
+      >
+        {link.label}
+      </Link>
+    );
+  };
+
+  const MobileNavLink = ({ link }: { link: typeof mainNavLinks[0] }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    
+    const getLinks = (type: string | undefined) => {
+        switch(type) {
+            case 'sectors': return sectorLinks;
+            case 'global': return globalLinks;
+            case 'investor': return investorLinks;
+            case 'about': return aboutLinks;
+            default: return [];
+        }
+    }
+    
+    if (link.dropdown) {
+        const links = getLinks(link.dropdown);
+      return (
+        <div>
+          <button
+            className="flex justify-between items-center w-full"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span>{link.label}</span>
+            <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} />
+          </button>
+          {isOpen && (
+            <div className="pl-4 mt-2 flex flex-col gap-2">
+              {links.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-muted-foreground hover:text-primary"
+                  onClick={() => setSheetOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+    return (
+      <Link
+        href={link.href}
+        className="transition-colors hover:text-primary focus:text-primary"
+        onClick={() => setSheetOpen(false)}
       >
         {link.label}
       </Link>
@@ -126,7 +222,7 @@ export default function Header() {
 
                   <nav className="flex flex-col gap-4 text-lg">
                     {mainNavLinks.map((link) => (
-                       <NavLink key={link.label} link={link} isMobile />
+                       <MobileNavLink key={link.label} link={link} />
                     ))}
                   </nav>
                   
