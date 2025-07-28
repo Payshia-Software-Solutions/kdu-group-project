@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useActionState, useEffect } from "react";
+import { useFormStatus } from "react-dom";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Breadcrumb from "@/components/layout/breadcrumb";
@@ -38,7 +38,7 @@ function SubmitButton() {
 
 export default function ContactPage() {
   const { toast } = useToast();
-  const [state, formAction] = useFormState(handleContactForm, null);
+  const [state, formAction] = useActionState(handleContactForm, null);
 
   useEffect(() => {
     if (state?.success) {
