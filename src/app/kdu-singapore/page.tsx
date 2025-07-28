@@ -12,7 +12,7 @@ export default function KduSingaporePage() {
         <Card>
           <CardHeader>
             <CardTitle>KDU Singapore</CardTitle>
-          </CardHeader>
+          </Header>
           <CardContent className="flex flex-col md:flex-row gap-8">
             <Image 
               src="https://placehold.co/600x400.png" 
