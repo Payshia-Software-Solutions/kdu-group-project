@@ -12,7 +12,6 @@ import Breadcrumb from '@/components/layout/breadcrumb';
 import { cn } from '@/lib/utils';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import type { CarouselApi } from "@/components/ui/carousel";
-import { Leaf, Users, ShieldCheck } from 'lucide-react';
 
 
 const factories = [
@@ -52,6 +51,29 @@ const factories = [
     logo: "http://content-provider.payshia.com/kdu-group/KDU-group.webp",
   },
 ];
+
+const insights = [
+    {
+        title: "A Remarkable Year with Highest Yields",
+        image: "https://placehold.co/600x400.png",
+        hint: "tea harvest celebration"
+    },
+    {
+        title: "Recognized for Green Business Commitment",
+        image: "https://placehold.co/600x400.png",
+        hint: "sustainability award"
+    },
+    {
+        title: "Champion of Choice, Seventh Successive Award",
+        image: "https://placehold.co/600x400.png",
+        hint: "business award ceremony"
+    },
+    {
+        title: "Launches New Era of Financial Inclusivity",
+        image: "https://placehold.co/600x400.png",
+        hint: "community finance meeting"
+    }
+]
 
 export default function TeaFactoriesPage() {
   const [api, setApi] = useState<CarouselApi>();
@@ -162,41 +184,28 @@ export default function TeaFactoriesPage() {
         </Card>
 
         <section className="my-16 md:my-24">
-          <h2 className="text-3xl font-bold font-headline text-center mb-12 text-primary">Factory Insights</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-xl transition-shadow">
-              <CardHeader className="items-center">
-                <div className="bg-accent/20 p-4 rounded-full mb-2">
-                    <Leaf className="w-8 h-8 text-primary" />
-                </div>
-                <CardTitle className="font-headline">Sustainable Practices</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Our factories are committed to environmentally friendly practices, from water conservation to waste management.</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center hover:shadow-xl transition-shadow">
-              <CardHeader className="items-center">
-                <div className="bg-accent/20 p-4 rounded-full mb-2">
-                    <Users className="w-8 h-8 text-primary" />
-                </div>
-                <CardTitle className="font-headline">Community Impact</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">We are proud to be a major employer in the regions we operate, empowering local communities.</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center hover:shadow-xl transition-shadow">
-              <CardHeader className="items-center">
-                <div className="bg-accent/20 p-4 rounded-full mb-2">
-                    <ShieldCheck className="w-8 h-8 text-primary" />
-                </div>
-                <CardTitle className="font-headline">Quality Assurance</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Stringent quality control at every stage of production ensures the finest quality tea for our customers.</p>
-              </CardContent>
-            </Card>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold font-headline">
+              Factory <span className="bg-muted px-2">Insights</span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {insights.map((insight, index) => (
+                <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                    <div className="relative h-64 w-full">
+                        <Image
+                            src={insight.image}
+                            alt={insight.title}
+                            fill
+                            className="object-cover"
+                            data-ai-hint={insight.hint}
+                        />
+                        <div className="absolute inset-x-0 bottom-0 bg-primary/80 text-primary-foreground p-4">
+                            <h3 className="font-semibold">{insight.title}</h3>
+                        </div>
+                    </div>
+                </Card>
+            ))}
           </div>
         </section>
 
