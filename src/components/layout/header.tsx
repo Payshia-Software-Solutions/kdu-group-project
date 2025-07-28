@@ -84,30 +84,20 @@ const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | '
 
 export default function Header() {
   const [isSheetOpen, setSheetOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const NavLink = ({ link }: { link: typeof mainNavLinks[0] }) => {
     if (link.dropdown) {
       return (
-        <DropdownMenu open={openDropdown === link.label} onOpenChange={(isOpen) => setOpenDropdown(isOpen ? link.label : null)}>
+        <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <div
-                onMouseEnter={() => setOpenDropdown(link.label)}
-                onMouseLeave={() => setOpenDropdown(null)}
-            >
-                <Button variant="ghost" className="flex items-center gap-1 hover:bg-transparent hover:text-primary focus:bg-transparent focus:text-primary active:bg-transparent p-0 h-auto data-[state=open]:text-primary">
-                {link.label}
-                <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", openDropdown === link.label && "rotate-180")} />
-                </Button>
-                <DropdownMenuContent 
-                    className="mt-2"
-                    onMouseEnter={() => setOpenDropdown(link.label)}
-                    onMouseLeave={() => setOpenDropdown(null)}
-                >
-                    <DropdownContent type={link.dropdown as any} />
-                </DropdownMenuContent>
-            </div>
+            <Button variant="ghost" className="flex items-center gap-1 hover:bg-transparent hover:text-primary focus:bg-transparent focus:text-primary active:bg-transparent p-0 h-auto data-[state=open]:text-primary">
+              {link.label}
+              <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+            </Button>
           </DropdownMenuTrigger>
+          <DropdownMenuContent className="mt-2">
+            <DropdownContent type={link.dropdown as any} />
+          </DropdownMenuContent>
         </DropdownMenu>
       );
     }
