@@ -10,6 +10,7 @@ import Image from 'next/image';
 import SubNav from '@/components/layout/sub-nav';
 import Breadcrumb from '@/components/layout/breadcrumb';
 import { cn } from '@/lib/utils';
+import { Counter } from '@/components/ui/counter';
 
 const factories = [
   {
@@ -72,6 +73,19 @@ const insights = [
     }
 ]
 
+const stats = [
+    {
+        value: 10000,
+        label: "Annual Tea Production (MT)",
+        suffix: " MT"
+    },
+    {
+        value: 25,
+        label: "Estates Managed",
+        suffix: ""
+    }
+]
+
 export default function TeaFactoriesPage() {
   const [selectedFactory, setSelectedFactory] = useState(factories[0]);
 
@@ -100,11 +114,23 @@ export default function TeaFactoriesPage() {
             { label: "Tea Factories", href: "/tea-factories" },
           ]}
         />
-        <div className="text-left my-12 bg-background p-8 rounded-lg">
-            <h1 className="text-4xl font-bold font-headline mb-4 text-primary">Our Tea Factories</h1>
-            <p className="text-lg text-muted-foreground max-w-3xl">
-                With a rich heritage rooted in Sri Lanka's esteemed tea culture, KDU Group is a custodian of traditional and sustainable tea manufacturing. Our factories are pillars of their communities, producing world-class teas that honor our island's legacy.
-            </p>
+        <div className="grid md:grid-cols-3 gap-8 my-12">
+            <div className="md:col-span-2 bg-background p-8 rounded-lg">
+                <h1 className="text-4xl font-bold font-headline mb-4 text-primary">Our Tea Factories</h1>
+                <p className="text-lg text-muted-foreground">
+                    With a rich heritage rooted in Sri Lanka's esteemed tea culture, KDU Group is a custodian of traditional and sustainable tea manufacturing. Our factories are pillars of their communities, producing world-class teas that honor our island's legacy.
+                </p>
+            </div>
+             <div className="space-y-4">
+                {stats.map((stat, index) => (
+                    <Card key={index} className="bg-primary text-primary-foreground p-6 rounded-lg">
+                        <h3 className="text-4xl font-bold">
+                            <Counter end={stat.value} suffix={stat.suffix} />
+                        </h3>
+                        <p className="text-primary-foreground/80">{stat.label}</p>
+                    </Card>
+                ))}
+            </div>
         </div>
 
         <div className="mb-12">
