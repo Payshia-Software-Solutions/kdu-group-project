@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ChevronDown, Factory, Utensils, Droplet, Zap, Gem, Building2, Globe, Briefcase, Info } from "lucide-react";
+import { Menu, X, ChevronDown, Factory, Utensils, Droplet, Zap, Gem, Building2, Globe, Briefcase, Info, GitMerge } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -19,12 +19,12 @@ const topNavLinks = [
   { href: "#", label: "News" },
   { href: "#", label: "Media" },
   { href: "#", label: "Careers" },
-  { href: "#", label: "Group Structure" },
+  { href: "/sectors", label: "Group Structure" },
 ];
 
 const mainNavLinks = [
     { href: "#", label: "Global", dropdown: 'global' },
-    { href: "#", label: "Sectors", dropdown: 'sectors' },
+    { href: "/sectors", label: "Sectors", dropdown: 'sectors' },
     { href: "#", label: "Community & Environment" },
     { href: "#", label: "Investor Relations", dropdown: 'investor' },
     { href: "#", label: "About Us", dropdown: 'about' },
@@ -38,6 +38,7 @@ const sectorLinks = [
     {href: "/hydro-power", label: "Hydro Power", icon: <Zap className="w-5 h-5 text-primary" />},
     {href: "/gem-mining", label: "Gem Mining", icon: <Gem className="w-5 h-5 text-primary" />},
     {href: "/retail", label: "Retail Manufacture and Trading", icon: <Building2 className="w-5 h-5 text-primary" />},
+    {href: "/sectors", label: "All Sectors", icon: <GitMerge className="w-5 h-5 text-primary" />},
 ];
 
 const globalLinks = [
@@ -185,7 +186,7 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
             {topNavLinks.map((link) => (
               <Link
-                key={link.href}
+                key={link.label}
                 href={link.href}
                 className="transition-colors hover:text-accent focus:text-accent text-xs"
               >
@@ -239,7 +240,7 @@ export default function Header() {
                      <nav className="flex flex-col gap-4 text-base">
                         {topNavLinks.map((link) => (
                           <Link
-                            key={link.href}
+                            key={link.label}
                             href={link.href}
                             className="text-muted-foreground hover:text-primary"
                             onClick={() => setSheetOpen(false)}
