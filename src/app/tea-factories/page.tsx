@@ -54,7 +54,7 @@ export default function TeaFactoriesPage() {
           className="absolute inset-0 z-0 w-full h-full object-cover"
           poster="https://placehold.co/1600x900.png"
         >
-          <source src="https://content-provider.payshia.com/kdu-group/tea-video.mp4" type="video/mp4" />
+          <source src="https://content-provider.payshia.com/kdu-group/hero-video.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/50 z-10" />
       </section>
