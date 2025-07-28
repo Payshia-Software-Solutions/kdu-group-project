@@ -115,98 +115,102 @@ export default function TeaFactoriesPage() {
         </video>
         <div className="absolute inset-0 bg-black/50 z-10" />
       </section>
-      <main className="flex-grow container mx-auto px-4 md:px-6 -mt-32 relative z-20">
-        <Breadcrumb
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Sectors", href: "/sectors" },
-            { label: "Tea Factories", href: "/tea-factories" },
-          ]}
-        />
-        <div className="grid md:grid-cols-3 gap-8 my-12">
-            <div className="md:col-span-2 bg-background p-8 rounded-lg">
-                <h1 className="text-4xl font-bold font-headline mb-4 text-primary">Our Tea Factories</h1>
-                <p className="text-lg text-muted-foreground">
-                    With a rich heritage rooted in Sri Lanka's esteemed tea culture, KDU Group is a custodian of traditional and sustainable tea manufacturing. Our factories are pillars of their communities, producing world-class teas that honor our island's legacy.
-                </p>
-            </div>
-             <div className="space-y-4">
-                {stats.map((stat, index) => (
-                    <Card key={index} className="bg-primary text-primary-foreground p-6 rounded-lg">
-                        <h3 className="text-4xl font-bold">
-                            <Counter end={stat.value} suffix={stat.suffix} />
-                        </h3>
-                        <p className="text-primary-foreground/80">{stat.label}</p>
-                    </Card>
-                ))}
-            </div>
-        </div>
-
-        <div className="mb-12">
-            <Image 
-              src="https://placehold.co/1200x400.png"
-              alt="Tea Factories"
-              width={1200}
-              height={400}
-              className="rounded-lg object-cover w-full"
-              data-ai-hint="tea plantation landscape"
+      
+      <div className="w-full relative z-20 -mt-32">
+        <div className="container mx-auto px-4 md:px-6">
+            <Breadcrumb
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Sectors", href: "/sectors" },
+                { label: "Tea Factories", href: "/tea-factories" },
+              ]}
             />
-        </div>
+            <div className="grid md:grid-cols-3 gap-8 my-12">
+                <div className="md:col-span-2 bg-background p-8 rounded-lg">
+                    <h1 className="text-4xl font-bold font-headline mb-4 text-primary">Our Tea Factories</h1>
+                    <p className="text-lg text-muted-foreground">
+                        With a rich heritage rooted in Sri Lanka's esteemed tea culture, KDU Group is a custodian of traditional and sustainable tea manufacturing. Our factories are pillars of their communities, producing world-class teas that honor our island's legacy.
+                    </p>
+                </div>
+                 <div className="space-y-4">
+                    {stats.map((stat, index) => (
+                        <Card key={index} className="bg-primary text-primary-foreground p-6 rounded-lg">
+                            <h3 className="text-4xl font-bold">
+                                <Counter end={stat.value} suffix={stat.suffix} />
+                            </h3>
+                            <p className="text-primary-foreground/80">{stat.label}</p>
+                        </Card>
+                    ))}
+                </div>
+            </div>
 
-        <section className="bg-muted/50 py-12 rounded-lg">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="relative flex items-center">
-              <Button variant="ghost" size="icon" onClick={() => scroll('left')} className="absolute -left-4 z-10 bg-white shadow-md rounded-full hidden md:flex">
-                <ArrowLeft className="h-5 w-5" />
-              </Button>
-              <div ref={scrollContainerRef} className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide">
-                {factories.map((factory) => (
-                  <div
-                    key={factory.name}
-                    onClick={() => setSelectedFactory(factory)}
-                    className={cn(
-                      "cursor-pointer p-2 bg-white border-2 rounded-lg shrink-0",
-                      selectedFactory.name === factory.name ? 'border-primary' : 'border-transparent'
-                    )}
-                  >
-                    <Image src={factory.logo} alt={`${factory.name} Logo`} width={160} height={80} className="object-contain h-20" />
-                  </div>
-                ))}
-              </div>
-              <Button variant="ghost" size="icon" onClick={() => scroll('right')} className="absolute -right-4 z-10 bg-white shadow-md rounded-full hidden md:flex">
-                <ArrowRight className="h-5 w-5" />
+            <div className="mb-12">
+                <Image 
+                  src="https://placehold.co/1200x400.png"
+                  alt="Tea Factories"
+                  width={1200}
+                  height={400}
+                  className="rounded-lg object-cover w-full"
+                  data-ai-hint="tea plantation landscape"
+                />
+            </div>
+        </div>
+      </div>
+
+      <section className="bg-muted/50 w-full py-12">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="relative flex items-center">
+            <Button variant="ghost" size="icon" onClick={() => scroll('left')} className="absolute -left-4 z-10 bg-white shadow-md rounded-full hidden md:flex">
+              <ArrowLeft className="h-5 w-5" />
+            </Button>
+            <div ref={scrollContainerRef} className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide">
+              {factories.map((factory) => (
+                <div
+                  key={factory.name}
+                  onClick={() => setSelectedFactory(factory)}
+                  className={cn(
+                    "cursor-pointer p-2 bg-white border-2 rounded-lg shrink-0",
+                    selectedFactory.name === factory.name ? 'border-primary' : 'border-transparent'
+                  )}
+                >
+                  <Image src={factory.logo} alt={`${factory.name} Logo`} width={160} height={80} className="object-contain h-20" />
+                </div>
+              ))}
+            </div>
+            <Button variant="ghost" size="icon" onClick={() => scroll('right')} className="absolute -right-4 z-10 bg-white shadow-md rounded-full hidden md:flex">
+              <ArrowRight className="h-5 w-5" />
+            </Button>
+          </div>
+          
+          <div className="mt-8 bg-white p-8 rounded-lg shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="md:col-span-3 flex flex-col items-center text-center">
+              <Image src={selectedFactory.logo} alt={`${selectedFactory.name} Logo`} width={150} height={75} className="object-contain mb-4" />
+              <Button asChild className="w-full bg-primary hover:bg-primary/90">
+                <a href="#">
+                  Visit Website <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
               </Button>
             </div>
-            
-            <div className="mt-8 bg-white p-8 rounded-lg shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div className="md:col-span-3 flex flex-col items-center text-center">
-                <Image src={selectedFactory.logo} alt={`${selectedFactory.name} Logo`} width={150} height={75} className="object-contain mb-4" />
-                <Button asChild className="w-full bg-primary hover:bg-primary/90">
-                  <a href="#">
-                    Visit Website <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              </div>
-              <div className="md:col-span-5">
-                <h3 className="text-2xl font-bold font-headline mb-2">{selectedFactory.name}</h3>
-                <p className="text-muted-foreground">{selectedFactory.description}</p>
-              </div>
-              <div className="md:col-span-4">
-                <Image
-                  src={selectedFactory.image}
-                  alt={selectedFactory.name}
-                  width={400}
-                  height={300}
-                  className="rounded-lg object-cover w-full"
-                  data-ai-hint={selectedFactory.hint}
-                  key={selectedFactory.name}
-                />
-              </div>
+            <div className="md:col-span-5">
+              <h3 className="text-2xl font-bold font-headline mb-2">{selectedFactory.name}</h3>
+              <p className="text-muted-foreground">{selectedFactory.description}</p>
+            </div>
+            <div className="md:col-span-4">
+              <Image
+                src={selectedFactory.image}
+                alt={selectedFactory.name}
+                width={400}
+                height={300}
+                className="rounded-lg object-cover w-full"
+                data-ai-hint={selectedFactory.hint}
+                key={selectedFactory.name}
+              />
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-
+      <main className="flex-grow container mx-auto px-4 md:px-6">
         <section className="my-16 md:my-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold font-headline">
@@ -224,16 +228,17 @@ export default function TeaFactoriesPage() {
                             className="object-cover"
                             data-ai-hint={insight.hint}
                         />
-                        <div className="absolute inset-x-0 bottom-0 bg-primary/80 text-primary-foreground p-4">
-                            <h3 className="font-semibold">{insight.title}</h3>
-                        </div>
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                    </div>
+                     <div className="bg-white p-4">
+                        <h3 className="font-semibold text-lg">{insight.title}</h3>
                     </div>
                 </Card>
             ))}
           </div>
         </section>
-
       </main>
+      
       <Footer />
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {
