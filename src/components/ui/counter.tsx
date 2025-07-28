@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useCountUp, type CountUpProps } from 'react-countup';
 
@@ -13,7 +13,7 @@ type CounterProps = {
     className?: string;
 }
 
-function ClientOnlyCounter({ end, duration = 2, prefix = "", suffix = "", className }: CounterProps) {
+export function Counter({ end, duration = 2, prefix = "", suffix = "", className }: CounterProps) {
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true,
@@ -26,30 +26,16 @@ function ClientOnlyCounter({ end, duration = 2, prefix = "", suffix = "", classN
     prefix,
     suffix,
     separator: ",",
+    startOnMount: false, // We will manually start it
   };
 
   const { countUp, start } = useCountUp(countUpProps);
 
   useEffect(() => {
-    if (inView) {
+    if (inView && start) {
       start();
     }
   }, [inView, start]);
 
   return <span ref={ref} className={className}>{countUp}</span>;
-}
-
-
-export function Counter({ end, duration = 2, prefix = "", suffix = "", className }: CounterProps) {
-  const [isMounted, setIsMounted] = useState(false);
-  
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return <span className={className}>{prefix}{end.toLocaleString()}{suffix}</span>;
-  }
-
-  return <ClientOnlyCounter end={end} duration={duration} prefix={prefix} suffix={suffix} className={className} />;
 }
