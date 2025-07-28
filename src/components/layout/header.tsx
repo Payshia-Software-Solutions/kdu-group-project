@@ -28,7 +28,7 @@ const mainNavLinks = [
     { href: "#", label: "Community & Environment" },
     { href: "#", label: "Investor Relations", dropdown: 'investor' },
     { href: "#", label: "About Us", dropdown: 'about' },
-    { href: "#contact", label: "Contact Us" },
+    { href: "/contact", label: "Contact Us" },
 ];
 
 const sectorLinks = [
@@ -88,20 +88,30 @@ const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | '
 
 export default function Header() {
   const [isSheetOpen, setSheetOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  const NavLink = ({ link, isMobile }: { link: typeof mainNavLinks[0], isMobile?: boolean }) => {
+  const NavLink = ({ link }: { link: typeof mainNavLinks[0] }) => {
     if (link.dropdown) {
       return (
-        <DropdownMenu>
+        <DropdownMenu open={openDropdown === link.label} onOpenChange={(isOpen) => setOpenDropdown(isOpen ? link.label : null)}>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-1 hover:bg-transparent hover:text-primary focus:bg-transparent focus:text-primary active:bg-transparent p-0 h-auto data-[state=open]:text-primary">
-              {link.label}
-              <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-            </Button>
+            <div
+                onMouseEnter={() => setOpenDropdown(link.label)}
+                onMouseLeave={() => setOpenDropdown(null)}
+            >
+                <Button variant="ghost" className="flex items-center gap-1 hover:bg-transparent hover:text-primary focus:bg-transparent focus:text-primary active:bg-transparent p-0 h-auto data-[state=open]:text-primary">
+                {link.label}
+                <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", openDropdown === link.label && "rotate-180")} />
+                </Button>
+                <DropdownMenuContent 
+                    className="mt-2"
+                    onMouseEnter={() => setOpenDropdown(link.label)}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                >
+                    <DropdownContent type={link.dropdown as any} />
+                </DropdownMenuContent>
+            </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="mt-2">
-            <DropdownContent type={link.dropdown as any} />
-          </DropdownMenuContent>
         </DropdownMenu>
       );
     }
@@ -109,7 +119,6 @@ export default function Header() {
       <Link
         href={link.href}
         className="transition-colors hover:text-primary focus:text-primary"
-        onClick={() => isMobile && setSheetOpen(false)}
       >
         {link.label}
       </Link>
@@ -190,7 +199,7 @@ export default function Header() {
       {/* Main Navigation */}
       <div className="border-b border-border/40">
         <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-          <Link href="#home" className="flex flex-col items-center gap-2">
+          <Link href="/" className="flex flex-col items-center gap-2">
             <Image src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" alt="KDU Group Logo" width={50} height={50} />
             <span className="text-xs font-bold font-headline text-gray-700">KDU GROUP</span>
           </Link>
@@ -210,7 +219,7 @@ export default function Header() {
               <SheetContent side="left" className="bg-white">
                 <div className="flex flex-col p-6">
                   <div className="flex justify-between items-center mb-8">
-                      <Link href="#home" onClick={() => setSheetOpen(false)} className="flex items-center gap-2">
+                      <Link href="/" onClick={() => setSheetOpen(false)} className="flex items-center gap-2">
                           <Image src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" alt="KDU Group Logo" width={40} height={40} />
                           <span className="text-lg font-bold font-headline">KDU Group</span>
                       </Link>
