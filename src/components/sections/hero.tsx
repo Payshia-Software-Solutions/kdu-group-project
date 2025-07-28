@@ -29,6 +29,9 @@ export default function Hero() {
       <div className="relative z-20 container mx-auto px-4 md:px-6 h-full">
         <div className="grid md:grid-cols-2 h-full items-center">
           <div className="text-white text-left">
+            <div className="mb-4">
+                <Image src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" alt="KDU Group Logo" width={100} height={100} />
+            </div>
             <h1 className="text-6xl font-bold font-headline sm:text-7xl md:text-8xl drop-shadow-lg">
               KDU GROUP
             </h1>
