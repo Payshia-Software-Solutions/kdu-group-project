@@ -4,13 +4,13 @@ import Image from "next/image";
 import { ArrowRight, HelpCircle, Building2, Utensils, Droplet, Zap, Gem, Globe, Factory } from "lucide-react";
 
 const sectors = [
-    { name: "TEA FACTORIES", icon: <Factory />, href: "/tea-factories" },
-    { name: "HOSPITALITY", icon: <Utensils />, href: "/hospitality" },
-    { name: "PETROLIUM", icon: <Droplet />, href: "/petrolium" },
-    { name: "HYDRO POWER", icon: <Zap />, href: "/hydro-power" },
-    { name: "KDU SINGAPORE", icon: <Globe />, href: "/kdu-singapore" },
-    { name: "GEM MINING", icon: <Gem />, href: "/gem-mining" },
-    { name: "RETAIL MANUFACTURE AND TRADING", icon: <Building2 />, href: "/retail" },
+    { name: "TEA FACTORIES", icon: <Factory />, href: "/sectors/tea-factories" },
+    { name: "HOSPITALITY", icon: <Utensils />, href: "/sectors/hospitality" },
+    { name: "PETROLEUM", icon: <Droplet />, href: "/sectors/petroleum" },
+    { name: "HYDRO POWER", icon: <Zap />, href: "/sectors/hydro-power" },
+    { name: "KDU SINGAPORE", icon: <Globe />, href: "/sectors/kdu-singapore" },
+    { name: "GEM MINING", icon: <Gem />, href: "/sectors/gem-mining" },
+    { name: "RETAIL MANUFACTURE AND TRADING", icon: <Building2 />, href: "/sectors/retail" },
 ];
 
 export default function Hero() {
@@ -61,3 +61,5 @@ export default function Hero() {
     </section>
   );
 }
+
+    

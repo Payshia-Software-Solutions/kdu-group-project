@@ -33,7 +33,7 @@ const mainNavLinks = [
 ];
 
 const globalLinks = [
-    {href: "/kdu-singapore", label: "KDU Singapore", icon: Globe},
+    {href: "/sectors/kdu-singapore", label: "KDU Singapore", icon: Globe},
 ]
 
 const investorLinks = [
@@ -237,3 +237,5 @@ export default function Header() {
     </header>
   );
 }
+
+    
