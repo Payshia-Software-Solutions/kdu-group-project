@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -160,9 +161,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm" id="header">
       {/* Top Bar */}
-      <div className="bg-primary text-primary-foreground">
+      <div className="bg-primary text-primary-foreground hidden md:block">
         <div className="container mx-auto flex h-8 items-center justify-end px-4 md:px-6">
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+          <nav className="flex items-center gap-6 text-sm font-medium">
             {topNavLinks.map((link) => (
               <Link
                 key={link.label}
@@ -195,25 +196,23 @@ export default function Header() {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="bg-white">
-                <div className="flex flex-col p-6">
-                  <div className="flex justify-between items-center mb-8">
+              <SheetContent side="left" className="bg-white p-0">
+                <div className="flex flex-col h-full">
+                  <div className="p-6 flex justify-between items-center border-b">
                       <Link href="/" onClick={() => setSheetOpen(false)}>
                           <Image src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" alt="KDU Group Logo" width={40} height={40} />
                       </Link>
-                      <Button variant="ghost" size="icon" onClick={() => setSheetOpen(false)}>
-                          <X className="h-6 w-6" />
-                          <span className="sr-only">Close menu</span>
-                      </Button>
                   </div>
-
-                  <nav className="flex flex-col gap-4 text-lg">
-                    {mainNavLinks.map((link) => (
-                       <MobileNavLink key={link.label} link={link} />
-                    ))}
-                  </nav>
                   
-                  <div className="mt-8 border-t pt-6">
+                  <div className="p-6 flex-grow overflow-y-auto">
+                    <nav className="flex flex-col gap-4 text-lg">
+                      {mainNavLinks.map((link) => (
+                         <MobileNavLink key={link.label} link={link} />
+                      ))}
+                    </nav>
+                  </div>
+                  
+                  <div className="p-6 border-t">
                      <nav className="flex flex-col gap-4 text-base">
                         {topNavLinks.map((link) => (
                           <Link
@@ -237,5 +236,3 @@ export default function Header() {
     </header>
   );
 }
-
-    
