@@ -15,8 +15,8 @@ export default function MobileSectors() {
   return (
     <section className="md:hidden py-12 bg-primary">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-primary-foreground/20 border-t border-l border-primary-foreground/20">
-            {sectors.slice(0, 9).map((sector) => ( 
+        <div className="grid grid-cols-3 gap-px bg-primary-foreground/20 border-t border-l border-primary-foreground/20">
+            {sectors.slice(0, 6).map((sector) => ( 
                 <Link key={sector.name} href={sector.href}>
                     <div className="bg-primary border-b border-r border-primary-foreground/20 p-4 flex flex-col items-center justify-center text-center text-primary-foreground aspect-square hover:bg-primary-foreground/10 transition-colors cursor-pointer h-full">
                         <div className="mb-2">{sector.icon}</div>

@@ -15,7 +15,7 @@ const sectors = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative w-full flex items-center justify-center min-h-[calc(100vh-112px)] py-8">
+    <section id="home" className="relative w-full flex items-center justify-center min-h-[70vh] py-8">
       <video
         autoPlay
         loop
@@ -47,7 +47,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="hidden md:grid grid-cols-3 gap-4">
-            {sectors.map((sector) => (
+            {sectors.slice(0, 6).map((sector) => (
               <Link key={sector.name} href={sector.href}>
                 <div className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center text-center text-white aspect-square hover:bg-black/50 transition-colors cursor-pointer h-full">
                   <div className="mb-2">{sector.icon}</div>
