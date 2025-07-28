@@ -1,95 +1,132 @@
-import { Facebook, Twitter, Linkedin, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Phone, Mail, Instagram, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const footerLinks = {
-  company: [
-    { href: "#", label: "About" },
-    { href: "#", label: "Services" },
-    { href: "#", label: "Sectors" },
+const companyLinks = [
+    { href: "#", label: "Global" },
+    { href: "#", label: "Community & Environment" },
+    { href: "#", label: "Investor Relations" },
+    { href: "#", label: "About us" },
+    { href: "#", label: "News" },
+    { href: "#", label: "Media" },
     { href: "#", label: "Careers" },
-  ],
-  sectors: [
-    { href: "#", label: "Agriculture" },
-    { href: "#", label: "Transportation" },
-    { href: "#", label: "Textiles" },
-    { href: "#", label: "Technology" },
-  ]
-};
+    { href: "/contact", label: "Contact Us" },
+];
+
+const sectorsCol1 = [
+    { href: "#", label: "Financial Services" },
+    { href: "#", label: "Leisure" },
+    { href: "#", label: "Construction" },
+];
+
+const sectorsCol2 = [
+    { href: "#", label: "Agriculture & Plantations" },
+    { href: "#", label: "Strategic Investments" },
+    { href: "#", label: "Manufacturing & Trading" },
+];
+
+const sectorsCol3 = [
+    { href: "#", label: "Research & Innovation" },
+    { href: "#", label: "Digital Empowerment" },
+    { href: "#", label: "Mining" },
+];
 
 
 export default function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12 md:px-6">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-16">
-          
-          {/* Column 1: Logo and Company Links */}
-          <div className="flex flex-col items-start space-y-4">
-            <Link href="#home" className="flex items-center gap-2">
+      <div className="container mx-auto px-4 pt-16 pb-8 md:px-6">
+        
+        {/* Top Section */}
+        <div className="flex flex-wrap justify-between items-center gap-8 pb-8">
+          <div className="flex items-center gap-4">
+            <Link href="/">
               <Image src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" alt="KDU Group Logo" width={60} height={60} />
             </Link>
-            <nav className="flex flex-col space-y-2">
-              {footerLinks.company.map((link) => (
-                <Link key={link.label} href={link.href} className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
+            <a href="mailto:info@kdugroup.com" className="flex items-center gap-2 text-sm text-primary-foreground/80 hover:text-primary-foreground">
+              <Mail className="h-4 w-4"/>
+              <span>info@kdugroup.com</span>
+            </a>
           </div>
-
-          {/* Column 2: Business Sectors */}
-          <div className="flex flex-col items-start space-y-4">
-             <h3 className="text-lg font-semibold">Business Sectors</h3>
-             <nav className="flex flex-col space-y-2">
-              {footerLinks.sectors.map((link) => (
-                <Link key={link.label} href={link.href} className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          {/* Column 3: Contact Info */}
-          <div className="flex flex-col items-start space-y-4">
-            <h3 className="text-lg font-semibold">Contact Info</h3>
-            <div className="flex flex-col space-y-2 text-sm text-primary-foreground/80">
-                <div className="flex items-center gap-2">
-                    <Phone className="h-4 w-4"/>
-                    <span>+94 11 2479000</span>
-                </div>
-                <div className="flex items-start gap-2">
-                    <MapPin className="h-4 w-4 mt-1 flex-shrink-0"/>
-                    <span>400 Deans Road, Colombo 10</span>
-                </div>
-            </div>
-            <div className="flex items-center gap-2 mt-2">
-              <Button variant="ghost" size="icon" asChild className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10">
-                <Link href="#" aria-label="Facebook page">
-                  <Facebook className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10">
-                <Link href="#" aria-label="Twitter profile">
-                  <Twitter className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10">
-                <Link href="#" aria-label="LinkedIn profile">
-                  <Linkedin className="h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-
+          <nav className="flex flex-wrap gap-x-6 gap-y-2">
+            {companyLinks.map((link) => (
+              <Link key={link.label} href={link.href} className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
+        <div className="border-t border-primary-foreground/20 my-8"></div>
+
+        {/* Middle Section */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-2">
+                <h3 className="font-semibold mb-4">Sectors</h3>
+            </div>
+            <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <nav className="flex flex-col space-y-2">
+                    {sectorsCol1.map((link) => (
+                        <Link key={link.label} href={link.href} className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                        {link.label}
+                        </Link>
+                    ))}
+                </nav>
+                <nav className="flex flex-col space-y-2">
+                    {sectorsCol2.map((link) => (
+                        <Link key={link.label} href={link.href} className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                        {link.label}
+                        </Link>
+                    ))}
+                </nav>
+                <nav className="flex flex-col space-y-2">
+                    {sectorsCol3.map((link) => (
+                        <Link key={link.label} href={link.href} className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                        {link.label}
+                        </Link>
+                    ))}
+                </nav>
+            </div>
+             <div className="md:col-span-3 md:text-right">
+                <h3 className="font-semibold mb-4">Follow us on:</h3>
+                <div className="flex items-center md:justify-end gap-1">
+                  <Button variant="ghost" size="icon" asChild className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10">
+                    <Link href="#" aria-label="Facebook page">
+                      <Facebook className="h-5 w-5" />
+                    </Link>
+                  </Button>
+                   <Button variant="ghost" size="icon" asChild className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10">
+                    <Link href="#" aria-label="Instagram profile">
+                      <Instagram className="h-5 w-5" />
+                    </Link>
+                  </Button>
+                   <Button variant="ghost" size="icon" asChild className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10">
+                    <Link href="#" aria-label="Youtube channel">
+                      <Youtube className="h-5 w-5" />
+                    </Link>
+                  </Button>
+                  <Button variant="ghost" size="icon" asChild className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10">
+                    <Link href="#" aria-label="Twitter profile">
+                      <Twitter className="h-5 w-5" />
+                    </Link>
+                  </Button>
+                  <Button variant="ghost" size="icon" asChild className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10">
+                    <Link href="#" aria-label="LinkedIn profile">
+                      <Linkedin className="h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+            </div>
+        </div>
+
+        <div className="border-t border-primary-foreground/20 my-8"></div>
+
         {/* Bottom Copyright Row */}
-        <div className="mt-12 border-t border-primary-foreground/20 pt-6 text-center text-sm text-primary-foreground/60">
+        <div className="flex flex-wrap justify-between items-center gap-4 text-sm text-primary-foreground/60">
           <p>&copy; {new Date().getFullYear()} KDU Group. All rights reserved.</p>
-          <p className="mt-1">
-            Powered by <a href="https://payshia.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary-foreground">Payshia Software Solutions</a>
+          <p>
+            Design and develop by <a href="https://payshia.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary-foreground">Payshia Software Solutions</a>
           </p>
         </div>
       </div>
