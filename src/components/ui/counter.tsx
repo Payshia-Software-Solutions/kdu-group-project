@@ -19,20 +19,18 @@ export function Counter({ end, duration = 2, prefix = "", suffix = "", className
     triggerOnce: true,
   });
 
-  const countUpProps: CountUpProps = {
+  const { countUp, start } = useCountUp({
     start: 0,
     end,
     duration,
     prefix,
     suffix,
     separator: ",",
-    startOnMount: false, // We will manually start it
-  };
-
-  const { countUp, start } = useCountUp(countUpProps);
+    startOnMount: false,
+  });
 
   useEffect(() => {
-    if (inView && start) {
+    if (inView) {
       start();
     }
   }, [inView, start]);
