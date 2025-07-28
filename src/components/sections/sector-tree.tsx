@@ -33,17 +33,17 @@ export default function SectorTree() {
 
         <div className="relative">
           {/* Central Trunk Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-primary/20 -translate-x-1/2 hidden md:block"></div>
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/20 -translate-x-1/2 hidden md:block"></div>
 
-          <div className="space-y-12">
+          <div className="space-y-12 md:space-y-24">
             {sectors.map((sector, index) => (
               <div key={sector.name} className="relative">
-                <div className="md:flex items-center md:space-x-8">
+                <div className="md:flex items-center justify-center">
                   
-                  {/* Branch and Node for Left Side */}
-                  <div className={`flex-1 md:text-right ${index % 2 !== 0 ? 'md:order-3' : ''}`}>
+                  {/* Content for Left Side */}
+                  <div className={`w-full md:w-1/2 flex justify-end ${index % 2 !== 0 ? 'md:order-3' : 'md:order-1'}`}>
                     {index % 2 === 0 && (
-                       <Card className="inline-block w-full md:w-auto md:max-w-md ml-auto shadow-lg hover:shadow-xl transition-shadow duration-300">
+                       <Card className="w-full md:max-w-sm ml-auto shadow-lg hover:shadow-xl transition-shadow duration-300 md:mr-16">
                           <CardContent className="p-6">
                             <h3 className="text-2xl font-bold font-headline mb-4">{sector.name}</h3>
                             <ul className="space-y-2">
@@ -57,24 +57,25 @@ export default function SectorTree() {
                   </div>
                   
                   {/* Central Node Icon */}
-                  <div className="flex-shrink-0 md:order-2">
-                     <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-24 h-24 bg-background rounded-full flex items-center justify-center border-4 border-primary/20 hidden md:flex">
+                  <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 md:order-2">
+                     <div className="w-24 h-24 bg-background rounded-full flex items-center justify-center border-4 border-primary/20 hidden md:flex">
                         <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
                            {sector.icon}
                         </div>
                      </div>
+                     {/* Mobile Icon & Title */}
                      <div className="flex items-center gap-4 mb-4 md:hidden">
-                        <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                        <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                            {sector.icon}
                         </div>
                         <h3 className="text-2xl font-bold font-headline">{sector.name}</h3>
                      </div>
                   </div>
 
-                  {/* Branch and Node for Right Side */}
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:order-3' : ''}`}>
-                    {index % 2 !== 0 && (
-                      <Card className="inline-block w-full md:w-auto md:max-w-md mr-auto shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  {/* Content for Right Side */}
+                  <div className={`w-full md:w-1/2 flex justify-start ${index % 2 === 0 ? 'md:order-3' : 'md:order-1'}`}>
+                     {index % 2 !== 0 && (
+                      <Card className="w-full md:max-w-sm mr-auto shadow-lg hover:shadow-xl transition-shadow duration-300 md:ml-16">
                           <CardContent className="p-6">
                             <h3 className="text-2xl font-bold font-headline mb-4">{sector.name}</h3>
                             <ul className="space-y-2">
@@ -91,7 +92,7 @@ export default function SectorTree() {
                 {/* Mobile view card */}
                 <div className="md:hidden">
                     <Card className="shadow-lg">
-                      <CardContent className="p-6">
+                      <CardContent className="p-6 pt-6">
                          <ul className="space-y-2">
                            {sector.subItems.map(item => (
                              <li key={item} className="text-muted-foreground">{item}</li>
@@ -100,7 +101,6 @@ export default function SectorTree() {
                       </CardContent>
                     </Card>
                 </div>
-
               </div>
             ))}
           </div>
