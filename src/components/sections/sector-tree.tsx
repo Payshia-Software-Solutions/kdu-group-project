@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Leaf, Fuel, Gem, Utensils, Zap, Building2, Globe } from "lucide-react";
+import Image from "next/image";
 
 const sectors = [
   {
@@ -49,6 +50,17 @@ export default function SectorTree() {
           <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
             Operating across multiple distinct business sectors, the KDU Group stands as one of Sri Lanka’s most diversified conglomerates. Explore our areas of operation below.
           </p>
+        </div>
+
+        <div className="mb-12">
+            <Image 
+              src="https://placehold.co/1200x400.png"
+              alt="Sector Tree"
+              width={1200}
+              height={400}
+              className="rounded-lg object-cover w-full"
+              data-ai-hint="business hierarchy"
+            />
         </div>
 
         <div className="max-w-4xl mx-auto">
