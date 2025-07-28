@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -11,11 +11,12 @@ import SubNav from '@/components/layout/sub-nav';
 import Breadcrumb from '@/components/layout/breadcrumb';
 import { cn } from '@/lib/utils';
 import { Counter } from '@/components/ui/counter';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 const factories = [
   {
     name: "Galpadithanne Tea Factory",
-    description: "Nestled in the heart of Sri Lanka's tea country, producing high-quality orthodox teas renowned for their rich flavor and aromatic bouquet.",
+    description: "Nestled in the heart of Sri Lanka's tea country, this factory produces high-quality orthodox teas renowned for their rich flavor and aromatic bouquet.",
     image: "https://placehold.co/600x400.png",
     hint: "tea plantation sunrise",
     logo: "http://content-provider.payshia.com/kdu-group/KDU-group.webp",
@@ -36,7 +37,7 @@ const factories = [
   },
   {
     name: "Peak View Tea Factory",
-    description: "Offering panoramic views and even more impressive teas, specializing in single-origin batches that capture the essence of the region.",
+    description: "Offering panoramic views and even more impressive teas, this factory specializes in single-origin batches that capture the essence of the region.",
     image: "https://placehold.co/600x400.png",
     hint: "mountain tea estate",
     logo: "http://content-provider.payshia.com/kdu-group/KDU-group.webp",
@@ -88,6 +89,14 @@ const stats = [
 
 export default function TeaFactoriesPage() {
   const [selectedFactory, setSelectedFactory] = useState(factories[0]);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = direction === 'left' ? -300 : 300;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -144,49 +153,59 @@ export default function TeaFactoriesPage() {
             />
         </div>
 
-        <Card className="mb-12">
-            <CardContent className="p-6">
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                    {factories.map((factory) => (
-                        <Button
-                            key={factory.name}
-                            variant="outline"
-                            className={cn(
-                                "w-full h-24 flex items-center justify-center p-2 border-2 transition-all",
-                                selectedFactory.name === factory.name ? "border-primary scale-105 shadow-lg" : "border-transparent opacity-60 hover:opacity-100"
-                            )}
-                            onClick={() => setSelectedFactory(factory)}
-                        >
-                            <Image src={factory.logo} alt={`${factory.name} Logo`} width={100} height={40} className="object-contain" />
-                        </Button>
-                    ))}
-                </div>
-            </CardContent>
-        </Card>
-
-        <Card className="overflow-hidden shadow-lg mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="relative h-80 md:h-full w-full min-h-[300px]">
-              <Image
-                src={selectedFactory.image}
-                alt={selectedFactory.name}
-                fill
-                className="object-cover transition-transform duration-500 ease-in-out"
-                data-ai-hint={selectedFactory.hint}
-                key={selectedFactory.name} // Force re-render on change
-              />
+        <section className="bg-muted/50 py-12 rounded-lg">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="relative flex items-center">
+              <Button variant="ghost" size="icon" onClick={() => scroll('left')} className="absolute -left-4 z-10 bg-white shadow-md rounded-full hidden md:flex">
+                <ArrowLeft className="h-5 w-5" />
+              </Button>
+              <div ref={scrollContainerRef} className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide">
+                {factories.map((factory) => (
+                  <div
+                    key={factory.name}
+                    onClick={() => setSelectedFactory(factory)}
+                    className={cn(
+                      "cursor-pointer p-2 bg-white border-2 rounded-lg shrink-0",
+                      selectedFactory.name === factory.name ? 'border-primary' : 'border-transparent'
+                    )}
+                  >
+                    <Image src={factory.logo} alt={`${factory.name} Logo`} width={160} height={80} className="object-contain h-20" />
+                  </div>
+                ))}
+              </div>
+              <Button variant="ghost" size="icon" onClick={() => scroll('right')} className="absolute -right-4 z-10 bg-white shadow-md rounded-full hidden md:flex">
+                <ArrowRight className="h-5 w-5" />
+              </Button>
             </div>
-            <div className="p-8 flex flex-col justify-center">
-              <CardHeader>
-                <CardTitle className="font-headline text-3xl">{selectedFactory.name}</CardTitle>
-                <CardDescription>KDU Group Tea Factory</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-lg">{selectedFactory.description}</p>
-              </CardContent>
+            
+            <div className="mt-8 bg-white p-8 rounded-lg shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              <div className="md:col-span-3 flex flex-col items-center text-center">
+                <Image src={selectedFactory.logo} alt={`${selectedFactory.name} Logo`} width={150} height={75} className="object-contain mb-4" />
+                <Button asChild className="w-full bg-primary hover:bg-primary/90">
+                  <a href="#">
+                    Visit Website <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+              <div className="md:col-span-5">
+                <h3 className="text-2xl font-bold font-headline mb-2">{selectedFactory.name}</h3>
+                <p className="text-muted-foreground">{selectedFactory.description}</p>
+              </div>
+              <div className="md:col-span-4">
+                <Image
+                  src={selectedFactory.image}
+                  alt={selectedFactory.name}
+                  width={400}
+                  height={300}
+                  className="rounded-lg object-cover w-full"
+                  data-ai-hint={selectedFactory.hint}
+                  key={selectedFactory.name}
+                />
+              </div>
             </div>
           </div>
-        </Card>
+        </section>
+
 
         <section className="my-16 md:my-24">
           <div className="text-center mb-12">
@@ -216,6 +235,15 @@ export default function TeaFactoriesPage() {
 
       </main>
       <Footer />
+      <style jsx global>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }
