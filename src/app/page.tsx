@@ -3,6 +3,7 @@ import Footer from '@/components/layout/footer';
 import Hero from '@/components/sections/hero';
 import About from '@/components/sections/about';
 import Resort from '@/components/sections/resort';
+import LatestNews from '@/components/sections/latest-news';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <div id="about" />
         <About />
         <Resort />
+        <LatestNews />
       </main>
       <Footer />
     </div>
