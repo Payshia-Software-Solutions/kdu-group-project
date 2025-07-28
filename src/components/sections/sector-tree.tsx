@@ -1,37 +1,53 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Leaf, Fuel, Gem, Utensils, Zap, Building2, Globe } from "lucide-react";
+import { Leaf, Fuel, Gem, Utensils, Zap, Building2, Globe, Ship } from "lucide-react";
 import Image from "next/image";
 
 const sectors = [
   {
     name: "Tea Factories",
     icon: <Leaf className="w-6 h-6 text-primary" />,
-    subItems: ["Eheliyagoda", "Ganthuna", "Halpe", "Karawita"],
+    subItems: [
+      "Galpadithanne Tea Factory",
+      "Kuttapitiya Tea Estate and Factory",
+      "New Kendagastenna Tea Factory",
+      "Peak View Tea Factory",
+      "Matuwagala Tea Factory",
+    ],
   },
   {
     name: "Hospitality",
     icon: <Utensils className="w-6 h-6 text-primary" />,
-    subItems: ["Weerawila Rajawarna Resort"],
+    subItems: [
+      "Rajawarana Resort, Weerawila",
+      "Silver Ray Complex",
+      "French Way Restaurant",
+    ],
   },
   {
     name: "Petrolium",
     icon: <Fuel className="w-6 h-6 text-primary" />,
-    subItems: ["Allied Lube", "Distributor for Indian Oil Corporation"],
+    subItems: ["K.D.U. & SONS FILLING STATION", "K.D.U. FUEL MART"],
   },
   {
     name: "Hydro Power",
     icon: <Zap className="w-6 h-6 text-primary" />,
-    subItems: ["Operational Power Plants", "Upcoming Projects"],
+    subItems: ["K.D.U. MINI HYDRO"],
   },
   {
-    name: "Gem Mining",
-    icon: <Gem className="w-6 h-6 text-primary" />,
-    subItems: ["KDU Mining", "Gem Paradise"],
+    name: "KDU Exports",
+    icon: <Ship className="w-6 h-6 text-primary" />,
+    subItems: ["Tea Jar"],
   },
   {
     name: "Retail Manufacture and Trading",
     icon: <Building2 className="w-6 h-6 text-primary" />,
-    subItems: ["KDU Trading", "Retail Outlets"],
+    subItems: [
+        "Tea Jar Lounge",
+        "Tea Jar by the Lake Weerawila",
+        "Tea Jar Galle",
+        "Tea Jar Colombo",
+        "Tea Jar Ella",
+    ],
   },
   {
     name: "Global",
