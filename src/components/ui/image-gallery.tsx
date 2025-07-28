@@ -78,7 +78,7 @@ export function ImageGallery({ images }: ImageGalleryProps) {
                   <span className="sr-only">Close</span>
               </Button>
 
-              <div className="absolute z-50 top-1/2 left-4 -translate-y-1/2">
+              <div className="absolute z-[60] top-1/2 left-4 -translate-y-1/2">
                     <Button
                       variant="ghost"
                       size="icon"
@@ -89,7 +89,7 @@ export function ImageGallery({ images }: ImageGalleryProps) {
                       <span className="sr-only">Previous Image</span>
                   </Button>
               </div>
-                <div className="absolute z-50 top-1/2 right-4 -translate-y-1/2">
+                <div className="absolute z-[60] top-1/2 right-4 -translate-y-1/2">
                   <Button
                       variant="ghost"
                       size="icon"
