@@ -4,13 +4,13 @@ import Image from "next/image";
 import { ArrowRight, HelpCircle, Building2, Utensils, Droplet, Zap, Gem, Globe, Factory } from "lucide-react";
 
 const sectors = [
-    { name: "TEA FACTORIES", icon: <Factory /> },
-    { name: "HOSPITALITY", icon: <Utensils /> },
-    { name: "PETROLIUM", icon: <Droplet /> },
-    { name: "HYDRO POWER", icon: <Zap /> },
-    { name: "KDU SINGAPORE", icon: <Globe /> },
-    { name: "GEM MINING", icon: <Gem /> },
-    { name: "RETAIL MANUFACTURE AND TRADING", icon: <Building2 /> },
+    { name: "TEA FACTORIES", icon: <Factory />, href: "/tea-factories" },
+    { name: "HOSPITALITY", icon: <Utensils />, href: "/hospitality" },
+    { name: "PETROLIUM", icon: <Droplet />, href: "/petrolium" },
+    { name: "HYDRO POWER", icon: <Zap />, href: "/hydro-power" },
+    { name: "KDU SINGAPORE", icon: <Globe />, href: "/kdu-singapore" },
+    { name: "GEM MINING", icon: <Gem />, href: "/gem-mining" },
+    { name: "RETAIL MANUFACTURE AND TRADING", icon: <Building2 />, href: "/retail" },
 ];
 
 export default function Hero() {
@@ -47,10 +47,12 @@ export default function Hero() {
           </div>
           <div className="hidden md:grid grid-cols-3 gap-4">
             {sectors.map((sector) => (
-              <div key={sector.name} className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center text-center text-white aspect-square hover:bg-black/50 transition-colors">
-                <div className="mb-2">{sector.icon}</div>
-                <p className="font-semibold text-sm">{sector.name}</p>
-              </div>
+              <Link key={sector.name} href={sector.href}>
+                <div className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center text-center text-white aspect-square hover:bg-black/50 transition-colors cursor-pointer h-full">
+                  <div className="mb-2">{sector.icon}</div>
+                  <p className="font-semibold text-sm">{sector.name}</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
