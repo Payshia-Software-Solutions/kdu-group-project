@@ -1,17 +1,16 @@
 
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import SubNav from '@/components/layout/sub-nav';
 import Breadcrumb from '@/components/layout/breadcrumb';
-import { cn } from '@/lib/utils';
 import { Counter } from '@/components/ui/counter';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const factories = [
   {
@@ -89,14 +88,6 @@ const stats = [
 
 export default function TeaFactoriesPage() {
   const [selectedFactory, setSelectedFactory] = useState(factories[0]);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = direction === 'left' ? -300 : 300;
-      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -159,27 +150,16 @@ export default function TeaFactoriesPage() {
 
       <section className="bg-muted/50 w-full py-12">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="relative flex items-center">
-            <Button variant="ghost" size="icon" onClick={() => scroll('left')} className="absolute -left-4 z-10 bg-white shadow-md rounded-full hidden md:flex">
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-            <div ref={scrollContainerRef} className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide">
-              {factories.map((factory) => (
-                <div
-                  key={factory.name}
-                  onClick={() => setSelectedFactory(factory)}
-                  className={cn(
-                    "cursor-pointer p-2 bg-white border-2 rounded-lg shrink-0",
-                    selectedFactory.name === factory.name ? 'border-primary' : 'border-transparent'
-                  )}
-                >
-                  <Image src={factory.logo} alt={`${factory.name} Logo`} width={160} height={80} className="object-contain h-20" />
-                </div>
-              ))}
-            </div>
-            <Button variant="ghost" size="icon" onClick={() => scroll('right')} className="absolute -right-4 z-10 bg-white shadow-md rounded-full hidden md:flex">
-              <ArrowRight className="h-5 w-5" />
-            </Button>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+            {factories.map((factory) => (
+              <div
+                key={factory.name}
+                onClick={() => setSelectedFactory(factory)}
+                className={`cursor-pointer p-2 bg-white border-2 rounded-lg ${selectedFactory.name === factory.name ? 'border-primary' : 'border-transparent'}`}
+              >
+                <Image src={factory.logo} alt={`${factory.name} Logo`} width={160} height={80} className="object-contain h-20 mx-auto" />
+              </div>
+            ))}
           </div>
           
           <div className="mt-8 bg-white p-8 rounded-lg shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
@@ -240,15 +220,6 @@ export default function TeaFactoriesPage() {
       </main>
       
       <Footer />
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </div>
   );
 }
