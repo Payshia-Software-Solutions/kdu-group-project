@@ -40,15 +40,12 @@ export default function Hero() {
               Growing Ever Stronger
             </h1>
             <div className="mt-8">
-              <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white font-bold h-auto px-6 py-4">
-                <Link href="#about" className="flex flex-col items-start">
-                    <div className="w-full flex justify-end">
-                        <span className="bg-white/20 rounded-full p-2 mb-4">
-                            <ArrowRight className="h-6 w-6" />
-                        </span>
-                    </div>
-                    <span className="text-lg">Explore Our</span>
-                    <span className="text-lg">Corporate Profile</span>
+              <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white font-bold h-auto px-6 py-3 text-lg">
+                <Link href="#about" className="flex items-center gap-4">
+                    <span>Explore Our Corporate Profile</span>
+                    <span className="bg-white/20 rounded-full p-2">
+                        <ArrowRight className="h-5 w-5" />
+                    </span>
                 </Link>
               </Button>
             </div>
