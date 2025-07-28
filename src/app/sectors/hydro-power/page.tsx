@@ -13,7 +13,8 @@ import Breadcrumb from '@/components/layout/breadcrumb';
 import { Counter } from '@/components/ui/counter';
 import { ArrowRight } from 'lucide-react';
 import { ImageGallery } from '@/components/ui/image-gallery';
-import { MotionContainer, MotionDiv } from '@/components/ui/motion';
+import { MotionDiv } from '@/components/ui/motion';
+import { Progress } from '@/components/ui/progress';
 
 const plants = [
   {
@@ -111,68 +112,67 @@ export default function HydroPowerPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <SubNav />
-      <MotionContainer>
-        <MotionDiv>
-          <section className="relative w-full h-[300px] md:h-[400px]">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 z-0 w-full h-full object-cover"
-              poster="https://placehold.co/1600x900.png"
-            >
-              <source src="https://content-provider.payshia.com/kdu-group/hero-video.mp4" type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-black/50 z-10" />
-          </section>
-        </MotionDiv>
-        
-        <main className="flex-grow">
-          <MotionDiv>
-            <div className="w-full relative z-20 -mt-32">
-                <div className="container mx-auto px-4 md:px-6">
-                    <Breadcrumb
-                      items={[
-                        { label: "Home", href: "/" },
-                        { label: "Sectors", href: "/sectors" },
-                        { label: "Hydro Power", href: "/sectors/hydro-power" },
-                      ]}
-                    />
-                    <div className="grid md:grid-cols-3 gap-8 my-12">
-                        <div className="md:col-span-2 bg-background p-8 rounded-lg">
-                            <h1 className="text-4xl font-bold font-headline mb-4 text-primary">Hydro Power</h1>
-                            <p className="text-lg text-muted-foreground">
-                                As part of our commitment to a sustainable future, KDU Group invests in renewable energy. Our hydro power division focuses on generating clean electricity, contributing to Sri Lanka's energy security while minimizing our environmental footprint.
-                            </p>
-                        </div>
-                         <div className="space-y-4">
-                            {stats.map((stat, index) => (
-                                <Card key={index} className="bg-primary text-primary-foreground p-6 rounded-lg">
-                                    <h3 className="text-4xl font-bold">
-                                        <Counter end={stat.value} suffix={stat.suffix} />
-                                    </h3>
-                                    <p className="text-primary-foreground/80">{stat.label}</p>
-                                </Card>
-                            ))}
-                        </div>
-                    </div>
+        <main className="flex-grow overflow-x-hidden">
+          <MotionDiv direction="left">
+            <section className="relative w-full h-[300px] md:h-[400px]">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 z-0 w-full h-full object-cover"
+                poster="https://placehold.co/1600x900.png"
+              >
+                <source src="https://content-provider.payshia.com/kdu-group/hero-video.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-black/50 z-10" />
+            </section>
+          </MotionDiv>
+          
+          <MotionDiv direction="right">
+              <div className="w-full relative z-20 -mt-32">
+                  <div className="container mx-auto px-4 md:px-6">
+                      <Breadcrumb
+                        items={[
+                          { label: "Home", href: "/" },
+                          { label: "Sectors", href: "/sectors" },
+                          { label: "Hydro Power", href: "/sectors/hydro-power" },
+                        ]}
+                      />
+                      <div className="grid md:grid-cols-3 gap-8 my-12">
+                          <div className="md:col-span-2 bg-background p-8 rounded-lg">
+                              <h1 className="text-4xl font-bold font-headline mb-4 text-primary">Hydro Power</h1>
+                              <p className="text-lg text-muted-foreground">
+                                  As part of our commitment to a sustainable future, KDU Group invests in renewable energy. Our hydro power division focuses on generating clean electricity, contributing to Sri Lanka's energy security while minimizing our environmental footprint.
+                              </p>
+                          </div>
+                           <div className="space-y-4">
+                              {stats.map((stat, index) => (
+                                  <Card key={index} className="bg-primary text-primary-foreground p-6 rounded-lg">
+                                      <h3 className="text-4xl font-bold">
+                                          <Counter end={stat.value} suffix={stat.suffix} />
+                                      </h3>
+                                      <p className="text-primary-foreground/80">{stat.label}</p>
+                                  </Card>
+                              ))}
+                          </div>
+                      </div>
 
-                    <div className="mb-12">
-                        <Image 
-                          src="https://placehold.co/1200x400.png"
-                          alt="Hydro Power"
-                          width={1200}
-                          height={400}
-                          className="rounded-lg object-cover w-full"
-                          data-ai-hint="hydro dam landscape"
-                        />
-                    </div>
-                </div>
-            </div>
+                      <div className="mb-12">
+                          <Image 
+                            src="https://placehold.co/1200x400.png"
+                            alt="Hydro Power"
+                            width={1200}
+                            height={400}
+                            className="rounded-lg object-cover w-full"
+                            data-ai-hint="hydro dam landscape"
+                          />
+                      </div>
+                  </div>
+              </div>
           </MotionDiv>
 
-          <MotionDiv>
+          <MotionDiv direction="left">
             <section className="bg-muted/50 w-full py-12">
                 <div className="container mx-auto px-4 md:px-6">
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
@@ -215,9 +215,40 @@ export default function HydroPowerPage() {
                 </div>
             </section>
           </MotionDiv>
+          
+          <MotionDiv direction="right">
+              <section className="bg-white py-16 md:py-24">
+                  <div className="container mx-auto px-4 md:px-6">
+                      <div className="text-center mb-12">
+                          <h2 className="text-3xl font-bold font-headline">
+                              Our <span className="bg-muted px-2">Goals</span>
+                          </h2>
+                          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                              We are committed to pushing the boundaries of renewable energy and making a positive impact on the communities we serve.
+                          </p>
+                      </div>
+                      <div className="max-w-4xl mx-auto space-y-8">
+                          <div>
+                              <div className="flex justify-between items-center mb-2">
+                                  <h3 className="font-semibold">Annual Energy Generation</h3>
+                                  <p className="text-sm text-muted-foreground">75% (7.5 GWh / 10 GWh)</p>
+                              </div>
+                              <Progress value={75} aria-label="Annual energy generation progress" />
+                          </div>
+                          <div>
+                              <div className="flex justify-between items-center mb-2">
+                                  <h3 className="font-semibold">Community Electrification</h3>
+                                  <p className="text-sm text-muted-foreground">90% (4500 / 5000 Homes)</p>
+                              </div>
+                              <Progress value={90} aria-label="Community electrification progress"/>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+          </MotionDiv>
 
-          <MotionDiv>
-            <section className="bg-white py-16 md:py-24">
+          <MotionDiv direction="left">
+            <section className="bg-muted/50 py-16 md:py-24">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold font-headline">
@@ -247,8 +278,8 @@ export default function HydroPowerPage() {
             </section>
           </MotionDiv>
 
-          <MotionDiv>
-            <section className="bg-muted/50 py-16 md:py-24">
+          <MotionDiv direction="right">
+            <section className="bg-white py-16 md:py-24">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold font-headline">Gallery</h2>
@@ -258,7 +289,6 @@ export default function HydroPowerPage() {
             </section>
           </MotionDiv>
         </main>
-      </MotionContainer>
       
       <Footer />
     </div>

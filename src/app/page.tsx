@@ -8,30 +8,28 @@ import About from '@/components/sections/about';
 import Resort from '@/components/sections/resort';
 import LatestNews from '@/components/sections/latest-news';
 import MobileSectors from '@/components/sections/mobile-sectors';
-import { MotionContainer, MotionDiv } from '@/components/ui/motion';
+import { MotionDiv } from '@/components/ui/motion';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
-      <main className="flex-grow">
-        <MotionContainer>
-          <MotionDiv>
+      <main className="flex-grow overflow-x-hidden">
+          <MotionDiv direction="left">
             <Hero />
           </MotionDiv>
-          <MotionDiv>
+          <MotionDiv direction="right">
             <MobileSectors />
           </MotionDiv>
-          <MotionDiv>
+          <MotionDiv direction="left">
             <About />
           </MotionDiv>
-          <MotionDiv>
+          <MotionDiv direction="right">
             <Resort />
           </MotionDiv>
-          <MotionDiv>
+          <MotionDiv direction="left">
             <LatestNews />
           </MotionDiv>
-        </MotionContainer>
       </main>
       <Footer />
     </div>

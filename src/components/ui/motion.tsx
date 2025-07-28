@@ -3,13 +3,25 @@
 
 import { motion, Variants } from "framer-motion";
 
-const defaultVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+const slideInFromLeft: Variants = {
+  hidden: { opacity: 0, x: -50 },
   visible: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const slideInFromRight: Variants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
       ease: "easeOut",
     },
   },
@@ -46,13 +58,20 @@ export function MotionContainer({ children, stagger = 0.1, className }: MotionCo
 
 type MotionDivProps = {
   children: React.ReactNode;
-  variants?: Variants;
+  direction?: "left" | "right";
   className?: string;
 };
 
-export function MotionDiv({ children, variants = defaultVariants, className }: MotionDivProps) {
+export function MotionDiv({ children, direction = "left", className }: MotionDivProps) {
+  const variants = direction === 'left' ? slideInFromLeft : slideInFromRight;
   return (
-    <motion.div variants={variants} className={className}>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={variants}
+      className={className}
+    >
       {children}
     </motion.div>
   );
