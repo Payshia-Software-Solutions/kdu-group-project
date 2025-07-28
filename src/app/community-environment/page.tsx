@@ -5,7 +5,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import Image from 'next/image';
 import { MotionDiv } from '@/components/ui/motion';
-import { Users, Leaf, HeartHandshake, BookOpen, Droplet } from 'lucide-react';
+import { Users, Leaf, HeartHandshake, BookOpen, Droplet, Zap } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import Breadcrumb from '@/components/layout/breadcrumb';
 import { Counter } from '@/components/ui/counter';
@@ -206,4 +206,3 @@ export default function CommunityEnvironmentPage() {
     </div>
   );
 }
-
