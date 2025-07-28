@@ -4,6 +4,7 @@ import Hero from '@/components/sections/hero';
 import About from '@/components/sections/about';
 import Resort from '@/components/sections/resort';
 import LatestNews from '@/components/sections/latest-news';
+import MobileSectors from '@/components/sections/mobile-sectors';
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
         <Hero />
+        <MobileSectors />
         <About />
         <Resort />
         <LatestNews />

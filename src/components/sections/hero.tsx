@@ -57,18 +57,6 @@ export default function Hero() {
             ))}
           </div>
         </div>
-
-        {/* Mobile-only sector grid */}
-        <div className="md:hidden grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
-            {sectors.slice(0, 6).map((sector) => ( // show first 6 for a cleaner mobile look
-                <Link key={sector.name} href={sector.href}>
-                    <div className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center text-center text-white aspect-square hover:bg-black/50 transition-colors cursor-pointer h-full">
-                        <div className="mb-2">{sector.icon}</div>
-                        <p className="font-semibold text-xs">{sector.name}</p>
-                    </div>
-                </Link>
-            ))}
-        </div>
       </div>
     </section>
   );
