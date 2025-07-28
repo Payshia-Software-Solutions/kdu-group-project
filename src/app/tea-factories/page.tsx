@@ -5,6 +5,7 @@ import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import SubNav from '@/components/layout/sub-nav';
+import Breadcrumb from '@/components/layout/breadcrumb';
 
 const factories = [
   {
@@ -44,10 +45,30 @@ export default function TeaFactoriesPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <SubNav />
-      <main className="flex-grow container mx-auto px-4 md:px-6 py-12">
-        <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold font-headline mb-4">Our Tea Factories</h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+      <section className="relative w-full h-[300px] md:h-[400px]">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 z-0 w-full h-full object-cover"
+          poster="https://placehold.co/1600x900.png"
+        >
+          <source src="https://content-provider.payshia.com/kdu-group/tea-video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/50 z-10" />
+      </section>
+      <main className="flex-grow container mx-auto px-4 md:px-6 -mt-32 relative z-20">
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Sectors", href: "/sectors" },
+            { label: "Tea Factories", href: "/tea-factories" },
+          ]}
+        />
+        <div className="text-left my-12 bg-background/80 backdrop-blur-sm p-8 rounded-lg">
+            <h1 className="text-4xl font-bold font-headline mb-4 text-primary">Our Tea Factories</h1>
+            <p className="text-lg text-muted-foreground max-w-3xl">
                 With a rich heritage rooted in Sri Lanka's esteemed tea culture, KDU Group is a custodian of traditional and sustainable tea manufacturing. Our factories are pillars of their communities, producing world-class teas that honor our island's legacy.
             </p>
         </div>
