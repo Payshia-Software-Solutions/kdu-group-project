@@ -1,46 +1,52 @@
 "use client";
 
+import { useState } from 'react';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import SubNav from '@/components/layout/sub-nav';
 import Breadcrumb from '@/components/layout/breadcrumb';
+import { Factory } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const factories = [
   {
     name: "Galpadithanne Tea Factory",
-    description: "Nestled in the heart of Sri Lanka's tea country, producing high-quality orthodox teas.",
+    description: "Nestled in the heart of Sri Lanka's tea country, producing high-quality orthodox teas renowned for their rich flavor and aromatic bouquet.",
     image: "https://placehold.co/600x400.png",
-    hint: "tea plantation",
+    hint: "tea plantation sunrise",
   },
   {
     name: "Kuttapitiya Tea Estate and Factory",
-    description: "Renowned for its commitment to traditional tea manufacturing processes and exceptional flavor profiles.",
+    description: "Renowned for its commitment to traditional tea manufacturing processes, this factory produces teas with exceptional and consistent flavor profiles.",
     image: "https://placehold.co/600x400.png",
-    hint: "tea leaves",
+    hint: "tea leaves morning",
   },
   {
     name: "New Kendagastenna Tea Factory",
-    description: "A modern facility that combines innovation with age-old traditions to create unique tea blends.",
+    description: "A modern facility that seamlessly combines innovation with age-old traditions to create unique and sought-after tea blends.",
     image: "https://placehold.co/600x400.png",
-    hint: "tea factory interior",
+    hint: "modern tea factory",
   },
   {
     name: "Peak View Tea Factory",
-    description: "Offering panoramic views and even more impressive teas, specializing in single-origin batches.",
+    description: "Offering panoramic views and even more impressive teas, specializing in single-origin batches that capture the essence of the region.",
     image: "https://placehold.co/600x400.png",
-    hint: "mountain landscape",
+    hint: "mountain tea estate",
   },
   {
     name: "Matuwagala Tea Factory",
-    description: "A cornerstone of the local community, dedicated to sustainable practices and empowering workers.",
+    description: "A cornerstone of the local community, this factory is dedicated to sustainable practices and empowering its workforce through fair trade.",
     image: "https://placehold.co/600x400.png",
-    hint: "tea workers",
+    hint: "tea workers smiling",
   },
 ];
 
 export default function TeaFactoriesPage() {
+  const [selectedFactory, setSelectedFactory] = useState(factories[0]);
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
@@ -73,26 +79,50 @@ export default function TeaFactoriesPage() {
             </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {factories.map((factory) => (
-            <Card key={factory.name} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="relative h-60 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="md:col-span-1">
+            <Card>
+              <CardHeader>
+                <CardTitle>Our Factories</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-2">
+                {factories.map((factory) => (
+                  <Button
+                    key={factory.name}
+                    variant="ghost"
+                    onClick={() => setSelectedFactory(factory)}
+                    className={cn(
+                        "w-full justify-start text-left h-auto p-4",
+                        selectedFactory.name === factory.name && "bg-accent text-accent-foreground"
+                    )}
+                  >
+                    <Factory className="mr-4 h-6 w-6 text-primary" />
+                    <span className="font-semibold">{factory.name}</span>
+                  </Button>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+          <div className="md:col-span-2">
+            <Card className="overflow-hidden shadow-lg">
+              <div className="relative h-80 w-full">
                 <Image
-                  src={factory.image}
-                  alt={factory.name}
+                  src={selectedFactory.image}
+                  alt={selectedFactory.name}
                   fill
-                  className="object-cover"
-                  data-ai-hint={factory.hint}
+                  className="object-cover transition-transform duration-500 ease-in-out hover:scale-105"
+                  data-ai-hint={selectedFactory.hint}
+                  key={selectedFactory.name} // Force re-render on change
                 />
               </div>
               <CardHeader>
-                <CardTitle>{factory.name}</CardTitle>
+                <CardTitle className="font-headline text-3xl">{selectedFactory.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">{factory.description}</p>
+                <p className="text-muted-foreground text-lg">{selectedFactory.description}</p>
               </CardContent>
             </Card>
-          ))}
+          </div>
         </div>
       </main>
       <Footer />
