@@ -88,6 +88,9 @@ export default function Footer() {
         {/* Bottom Copyright Row */}
         <div className="mt-12 border-t border-primary-foreground/20 pt-6 text-center text-sm text-primary-foreground/60">
           <p>&copy; {new Date().getFullYear()} KDU Group. All rights reserved.</p>
+          <p className="mt-1">
+            Powered by <a href="https://payshia.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary-foreground">Payshia Software Solutions</a>
+          </p>
         </div>
       </div>
     </footer>
