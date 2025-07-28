@@ -70,19 +70,9 @@ export default function LatestNews() {
       <div className="container mx-auto px-4 md:px-6">
         {isMobile ? (
           <div className="flex flex-col gap-8">
-             <Card className="col-span-1 bg-primary text-primary-foreground p-8 flex flex-col justify-between rounded-lg shadow-lg">
-                <div>
-                  <h2 className="text-4xl font-bold font-headline mb-4">Latest News</h2>
-                </div>
-                <Link href="#" passHref>
-                  <Button className="mt-auto w-full flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded-full p-4 text-lg">
-                    <span>See All News</span>
-                    <span className="ml-2 bg-black/20 rounded-full p-1 inline-flex items-center justify-center">
-                      <ArrowRight className="h-5 w-5" />
-                    </span>
-                  </Button>
-                </Link>
-              </Card>
+            <div className="text-center">
+                 <h2 className="text-3xl font-bold font-headline">Latest News</h2>
+            </div>
             <Carousel
               opts={{
                 align: "start",
@@ -99,9 +89,19 @@ export default function LatestNews() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
-              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
+              <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
+              <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
             </Carousel>
+             <div className="text-center">
+                <Link href="#" passHref>
+                  <Button className="mt-auto flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded-full p-4 text-lg">
+                    <span>See All News</span>
+                    <span className="ml-2 bg-black/20 rounded-full p-1 inline-flex items-center justify-center">
+                      <ArrowRight className="h-5 w-5" />
+                    </span>
+                  </Button>
+                </Link>
+             </div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-stretch">
