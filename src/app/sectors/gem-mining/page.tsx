@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState } from 'react';
@@ -11,6 +12,7 @@ import SubNav from '@/components/layout/sub-nav';
 import Breadcrumb from '@/components/layout/breadcrumb';
 import { Counter } from '@/components/ui/counter';
 import { ArrowRight } from 'lucide-react';
+import { ImageGallery } from '@/components/ui/image-gallery';
 
 const mines = [
   {
@@ -243,20 +245,7 @@ export default function GemMiningPage() {
             <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold font-headline">Gallery</h2>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {galleryImages.map((item, index) => (
-                    <div key={index} className="overflow-hidden rounded-lg group">
-                        <Image
-                            src={item.image}
-                            alt={item.alt}
-                            width={400}
-                            height={400}
-                            className="object-cover w-full h-full aspect-square group-hover:scale-105 transition-transform duration-300"
-                            data-ai-hint={item.hint}
-                        />
-                    </div>
-                ))}
-            </div>
+            <ImageGallery images={galleryImages} />
         </section>
       </main>
       
