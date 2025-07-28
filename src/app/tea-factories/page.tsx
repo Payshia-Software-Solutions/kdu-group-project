@@ -107,6 +107,17 @@ export default function TeaFactoriesPage() {
             </p>
         </div>
 
+        <div className="mb-12">
+            <Image 
+              src="https://placehold.co/1200x400.png"
+              alt="Tea Factories"
+              width={1200}
+              height={400}
+              className="rounded-lg object-cover w-full"
+              data-ai-hint="tea plantation landscape"
+            />
+        </div>
+
         <Card className="mb-12">
             <CardContent className="p-6">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
