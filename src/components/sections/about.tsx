@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section id="about" className="w-full">
       <div className="grid md:grid-cols-2">
-        <div className="bg-primary text-primary-foreground p-12 md:p-24 flex flex-col justify-center">
+        <div className="bg-gradient-to-br from-primary to-accent text-primary-foreground p-12 md:p-24 flex flex-col justify-center">
           <div className="space-y-8">
             <div>
               <h2 className="text-3xl font-bold font-headline mb-2">Purpose</h2>
