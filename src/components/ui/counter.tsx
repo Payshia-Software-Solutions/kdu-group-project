@@ -13,13 +13,7 @@ type CounterProps = {
     className?: string;
 }
 
-export function Counter({ end, duration = 2, prefix = "", suffix = "", className }: CounterProps) {
-  const [isMounted, setIsMounted] = useState(false);
-  
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
+function ClientOnlyCounter({ end, duration = 2, prefix = "", suffix = "", className }: CounterProps) {
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true,
@@ -34,23 +28,28 @@ export function Counter({ end, duration = 2, prefix = "", suffix = "", className
     separator: ",",
   };
 
-  const { countUp, start, update } = useCountUp(countUpProps);
+  const { countUp, start } = useCountUp(countUpProps);
 
   useEffect(() => {
-    if (inView && isMounted) {
+    if (inView) {
       start();
     }
-  }, [inView, isMounted, start]);
-  
-  useEffect(() => {
-    if(isMounted) {
-        update(end);
-    }
-  }, [end, update, isMounted]);
-
-  if (!isMounted) {
-    return <span className={className}>{prefix}{end}{suffix}</span>;
-  }
+  }, [inView, start]);
 
   return <span ref={ref} className={className}>{countUp}</span>;
+}
+
+
+export function Counter({ end, duration = 2, prefix = "", suffix = "", className }: CounterProps) {
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return <span className={className}>{prefix}{end.toLocaleString()}{suffix}</span>;
+  }
+
+  return <ClientOnlyCounter end={end} duration={duration} prefix={prefix} suffix={suffix} className={className} />;
 }
