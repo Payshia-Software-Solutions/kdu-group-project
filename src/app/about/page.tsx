@@ -135,19 +135,17 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold font-headline">Our Journey</h2>
                 <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">Tracing our path from a single venture to a diversified conglomerate.</p>
               </div>
-              <div className="relative">
-                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-border"></div>
+              <div className="relative max-w-2xl mx-auto">
+                <div className="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-border"></div>
                 {timelineEvents.map((item, index) => (
-                  <div key={index} className="relative md:w-1/2 md:py-4 flex md:justify-between items-center group">
-                    <div className={cn("md:w-1/2", index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left md:ml-auto')}>
-                        <Card className="p-6">
-                           <p className="text-primary font-bold text-lg mb-2">{item.year}</p>
-                           <p className="text-muted-foreground">{item.event}</p>
-                        </Card>
-                    </div>
-                     <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 bg-background left-1/2 -translate-x-1/2 h-4 w-4 rounded-full border-2 border-primary items-center justify-center">
+                  <div key={index} className="relative pl-8 py-4">
+                     <div className="absolute top-1/2 -translate-y-1/2 bg-background left-0 -translate-x-1/2 h-4 w-4 rounded-full border-2 border-primary flex items-center justify-center">
                         <div className="h-2 w-2 bg-primary rounded-full"></div>
                      </div>
+                     <Card className="p-6 ml-4">
+                       <p className="text-primary font-bold text-lg mb-2">{item.year}</p>
+                       <p className="text-muted-foreground">{item.event}</p>
+                    </Card>
                   </div>
                 ))}
               </div>
