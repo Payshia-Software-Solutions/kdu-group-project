@@ -41,9 +41,6 @@ export default function Hero() {
                   </span>
                 </Link>
               </Button>
-              <div className="w-48 h-48 mt-4">
-                  <Image src="https://placehold.co/200x200.png" alt="QR Code" width={200} height={200} data-ai-hint="qr code" />
-              </div>
             </div>
           </div>
           <div className="hidden md:grid grid-cols-3 gap-4">
