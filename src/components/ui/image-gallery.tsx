@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -64,54 +64,55 @@ export function ImageGallery({ images }: ImageGalleryProps) {
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="bg-transparent border-0 shadow-none p-0 max-w-screen max-h-screen w-full h-full flex items-center justify-center">
-            <div className="relative w-full h-full" onClick={closeLightbox}>
-                <div className="absolute inset-0 bg-black/80 z-40" />
+          <DialogTitle className="sr-only">Image Gallery</DialogTitle>
+          <div className="relative w-full h-full" onClick={closeLightbox}>
+              <div className="absolute inset-0 bg-black/80 z-40" />
 
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className="absolute top-4 right-4 z-50 text-white hover:bg-white/20 hover:text-white"
-                    onClick={closeLightbox}
-                >
-                    <X className="h-8 w-8" />
-                    <span className="sr-only">Close</span>
-                </Button>
+              <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute top-4 right-4 z-50 text-white hover:bg-white/20 hover:text-white"
+                  onClick={closeLightbox}
+              >
+                  <X className="h-8 w-8" />
+                  <span className="sr-only">Close</span>
+              </Button>
 
-                <div className="absolute z-50 top-1/2 left-4 -translate-y-1/2">
-                     <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={goToPrevious}
-                        className="rounded-full h-12 w-12 text-white hover:bg-white/20 hover:text-white"
-                    >
-                        <ChevronLeft className="h-8 w-8" />
-                        <span className="sr-only">Previous Image</span>
-                    </Button>
-                </div>
-                 <div className="absolute z-50 top-1/2 right-4 -translate-y-1/2">
+              <div className="absolute z-50 top-1/2 left-4 -translate-y-1/2">
                     <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={goToNext}
-                        className="rounded-full h-12 w-12 text-white hover:bg-white/20 hover:text-white"
-                    >
-                        <ChevronRight className="h-8 w-8" />
-                        <span className="sr-only">Next Image</span>
-                    </Button>
-                </div>
-               
+                      variant="ghost"
+                      size="icon"
+                      onClick={goToPrevious}
+                      className="rounded-full h-12 w-12 text-white hover:bg-white/20 hover:text-white"
+                  >
+                      <ChevronLeft className="h-8 w-8" />
+                      <span className="sr-only">Previous Image</span>
+                  </Button>
+              </div>
+                <div className="absolute z-50 top-1/2 right-4 -translate-y-1/2">
+                  <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={goToNext}
+                      className="rounded-full h-12 w-12 text-white hover:bg-white/20 hover:text-white"
+                  >
+                      <ChevronRight className="h-8 w-8" />
+                      <span className="sr-only">Next Image</span>
+                  </Button>
+              </div>
+              
 
-                <div className="relative z-50 w-full h-full flex items-center justify-center p-16" onClick={(e) => e.stopPropagation()}>
-                    <Image
-                        src={images[currentIndex].image}
-                        alt={images[currentIndex].alt}
-                        width={1600}
-                        height={900}
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        data-ai-hint={images[currentIndex].hint}
-                    />
-                </div>
-            </div>
+              <div className="relative z-50 w-full h-full flex items-center justify-center p-16" onClick={(e) => e.stopPropagation()}>
+                  <Image
+                      src={images[currentIndex].image}
+                      alt={images[currentIndex].alt}
+                      width={1600}
+                      height={900}
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                      data-ai-hint={images[currentIndex].hint}
+                  />
+              </div>
+          </div>
         </DialogContent>
       </Dialog>
     </div>
