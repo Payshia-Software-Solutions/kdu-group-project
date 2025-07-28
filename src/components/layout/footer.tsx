@@ -15,21 +15,19 @@ const companyLinks = [
 ];
 
 const sectorsCol1 = [
-    { href: "#", label: "Financial Services" },
-    { href: "#", label: "Leisure" },
-    { href: "#", label: "Construction" },
+    { href: "/sectors/tea-factories", label: "Tea Factories" },
+    { href: "/sectors/hospitality", label: "Hospitality" },
+    { href: "/sectors/petroleum", label: "Petroleum" },
 ];
 
 const sectorsCol2 = [
-    { href: "#", label: "Agriculture & Plantations" },
-    { href: "#", label: "Strategic Investments" },
-    { href: "#", label: "Manufacturing & Trading" },
+    { href: "/sectors/hydro-power", label: "Hydro Power" },
+    { href: "/sectors/gem-mining", label: "Gem Mining" },
+    { href: "/sectors/retail", label: "Retail & Trading" },
 ];
 
 const sectorsCol3 = [
-    { href: "#", label: "Research & Innovation" },
-    { href: "#", label: "Digital Empowerment" },
-    { href: "#", label: "Mining" },
+    { href: "/sectors/kdu-singapore", label: "KDU Singapore" },
 ];
 
 
