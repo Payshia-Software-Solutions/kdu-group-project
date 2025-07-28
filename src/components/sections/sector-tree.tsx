@@ -34,13 +34,13 @@ const sectors = [
   },
 ];
 
-const SubItem = ({ name, align, parentAlign }: { name: string, align: 'left' | 'right', parentAlign: 'left' | 'right' }) => (
+const SubItem = ({ name, align }: { name: string, align: 'left' | 'right' }) => (
     <div className={`sub-timeline-item ${align}`}>
         <div className="sub-timeline-branch"></div>
         <div className="sub-timeline-content">
-            {align === 'left' && <div className="font-bold text-gray-500">A</div>}
+            {align === 'left' && <div className="font-bold text-gray-500"></div>}
             <span className="text-sm">{name}</span>
-            {align === 'right' && <div className="font-bold text-gray-500">A</div>}
+            {align === 'right' && <div className="font-bold text-gray-500"></div>}
         </div>
     </div>
 );
@@ -76,7 +76,7 @@ export default function SectorTree() {
 
                         <div className="sub-timeline">
                             <div className="sub-timeline-node-start"></div>
-                            {sector.subItems.map(item => <SubItem key={item.name} {...item} parentAlign={sector.align} />)}
+                            {sector.subItems.map(item => <SubItem key={item.name} {...item} />)}
                             <div className="sub-timeline-node-end"></div>
                         </div>
                     </div>

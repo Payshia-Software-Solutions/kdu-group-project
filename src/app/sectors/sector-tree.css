@@ -97,11 +97,11 @@
 }
 
 .timeline-item.left .timeline-icon {
-    left: calc(50% - 25px - 40px);
+    left: calc(50% - 25px);
 }
 
 .timeline-item.right .timeline-icon {
-    right: calc(50% - 25px - 40px);
+    right: calc(50% - 25px);
 }
 
 .sub-timeline {
@@ -143,10 +143,11 @@
 }
 
 .timeline-item.left .sub-timeline-item.left .sub-timeline-branch {
-    left: 0;
+    right: 0;
 }
 .timeline-item.left .sub-timeline-item.right .sub-timeline-branch {
-    right: 0;
+    left: 0;
+    width: 100%;
 }
 
 .timeline-item.right .sub-timeline-item.left .sub-timeline-branch {
@@ -165,13 +166,13 @@
 }
 
 .timeline-item.left .sub-timeline-item.left .sub-timeline-content {
-    justify-content: flex-start;
-    padding-left: 30px;
+    justify-content: flex-end;
+    padding-right: 30px;
 }
 
 .timeline-item.left .sub-timeline-item.right .sub-timeline-content {
-    justify-content: flex-end;
-    padding-right: 30px;
+    justify-content: flex-start;
+    padding-left: 30px;
 }
 
 .timeline-item.right .sub-timeline-item.left .sub-timeline-content {
@@ -214,11 +215,13 @@
     }
     .timeline-item {
         width: 100%;
+        padding-left: 50px;
+        padding-right: 0;
     }
     .timeline-item.left .timeline-content,
     .timeline-item.right .timeline-content {
-        width: calc(100% - 90px);
-        float: right;
+        width: 100%;
+        float: left;
         text-align: left;
     }
     
@@ -237,8 +240,49 @@
     .timeline-item.right .timeline-icon {
         left: 50px;
     }
-    
+
     .timeline-item.right .timeline-content {
-        padding-left: 50px;
+        padding-left: 0;
+    }
+
+    .timeline-item.left .timeline-content {
+        float: right;
+        width: calc(100% - 70px);
+        padding-left: 20px;
+        text-align: left;
+    }
+
+    .timeline-item.right .timeline-content {
+        float: right;
+        width: calc(100% - 70px);
+        padding-left: 20px;
+        text-align: left;
+    }
+    
+    .timeline-item.left .sub-timeline::before,
+    .timeline-item.right .sub-timeline::before {
+        left: 0;
+    }
+    .timeline-item.left .sub-timeline-node-start,
+    .timeline-item.left .sub-timeline-node-end,
+    .timeline-item.right .sub-timeline-node-start,
+    .timeline-item.right .sub-timeline-node-end {
+        left: -8px;
+    }
+
+    .timeline-item.left .sub-timeline-item.left .sub-timeline-content,
+    .timeline-item.left .sub-timeline-item.right .sub-timeline-content,
+    .timeline-item.right .sub-timeline-item.left .sub-timeline-content,
+    .timeline-item.right .sub-timeline-item.right .sub-timeline-content {
+        justify-content: flex-start;
+        padding-left: 30px;
+        padding-right: 0;
+    }
+
+    .timeline-item.left .sub-timeline-item.left .sub-timeline-branch,
+    .timeline-item.left .sub-timeline-item.right .sub-timeline-branch,
+    .timeline-item.right .sub-timeline-item.left .sub-timeline-branch,
+    .timeline-item.right .sub-timeline-item.right .sub-timeline-branch {
+        left: 0;
     }
 }
