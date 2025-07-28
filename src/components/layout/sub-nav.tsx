@@ -17,7 +17,7 @@ export default function SubNav() {
         <div className={cn(
             "gap-px",
             isMobile 
-                ? "flex flex-nowrap overflow-x-auto" 
+                ? "flex flex-nowrap overflow-x-auto hide-scrollbar" 
                 : "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7"
         )}>
           {sectorLinks.map((link) => {
