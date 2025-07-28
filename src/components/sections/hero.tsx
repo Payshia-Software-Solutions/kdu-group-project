@@ -15,7 +15,7 @@ const sectors = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative w-full flex items-center justify-center min-h-screen py-8">
+    <section id="home" className="relative w-full flex items-center justify-center py-8 md:min-h-screen">
       <video
         autoPlay
         loop
