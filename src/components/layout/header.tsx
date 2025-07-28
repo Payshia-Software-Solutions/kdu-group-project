@@ -22,8 +22,15 @@ const topNavLinks = [
 ];
 
 const mainNavLinks = [
-    { href: "#", label: "Global", dropdown: [{href: "#", label: "KDU Singapore"}] },
-    { href: "#", label: "Sectors", dropdown: [{href: "#", label: "Tea Factories"}, {href: "#", label: "Hospitality"}] },
+    { href: "#", label: "Global", dropdown: [{href: "/kdu-singapore", label: "KDU Singapore"}] },
+    { href: "#", label: "Sectors", dropdown: [
+        {href: "/tea-factories", label: "Tea Factories"},
+        {href: "/hospitality", label: "Hospitality"},
+        {href: "/petrolium", label: "Petrolium"},
+        {href: "/hydro-power", label: "Hydro Power"},
+        {href: "/gem-mining", label: "Gem Mining"},
+        {href: "/retail", label: "Retail Manufacture and Trading"},
+    ] },
     { href: "#", label: "Community & Environment" },
     { href: "#", label: "Investor Relations", dropdown: [{href: "#", label: "Financials"}] },
     { href: "#", label: "About Us", dropdown: [{href: "#", label: "Our Story"}] },
@@ -66,10 +73,10 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
+    <header className="sticky top-0 z-50 w-full bg-white shadow-sm" id="header">
       {/* Top Bar */}
       <div className="bg-primary text-primary-foreground">
-        <div className="container mx-auto flex h-10 items-center justify-end px-4 md:px-6">
+        <div className="container mx-auto flex h-8 items-center justify-end px-4 md:px-6">
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
             {topNavLinks.map((link) => (
               <Link
@@ -86,10 +93,10 @@ export default function Header() {
 
       {/* Main Navigation */}
       <div className="border-b border-border/40">
-        <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-6">
+        <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
           <Link href="#home" className="flex flex-col items-center gap-2">
-            <Image src="https://placehold.co/80x80.png" alt="KDU Group Logo" width={60} height={60} data-ai-hint="logo company" />
-            <span className="text-sm font-bold font-headline text-gray-700">KDU GROUP</span>
+            <Image src="https://placehold.co/80x80.png" alt="KDU Group Logo" width={50} height={50} data-ai-hint="logo company" />
+            <span className="text-xs font-bold font-headline text-gray-700">KDU GROUP</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-base font-medium text-gray-700">
             {mainNavLinks.map((link) => (

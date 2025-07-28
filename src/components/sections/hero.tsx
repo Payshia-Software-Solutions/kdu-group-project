@@ -15,7 +15,7 @@ const sectors = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative h-screen w-full flex items-center justify-center">
+    <section id="home" className="relative w-full flex items-center justify-center h-[calc(100vh-112px)]">
       <video
         autoPlay
         loop
@@ -25,7 +25,7 @@ export default function Hero() {
       >
         <source src="https://content-provider.payshia.com/kdu-group/hero-video.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-black/50 z-10"></div>
+      <div className="absolute inset-0 bg-black/40 z-10"></div>
       <div className="relative z-20 container mx-auto px-4 md:px-6 h-full">
         <div className="grid md:grid-cols-2 h-full items-center">
           <div className="text-white text-left">
