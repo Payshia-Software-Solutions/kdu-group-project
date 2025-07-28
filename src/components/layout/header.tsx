@@ -55,32 +55,27 @@ const aboutLinks = [
 
 
 const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | 'about' }) => {
-    if (type === 'sectors') {
-        return (
-            <div className="w-96 p-4 grid grid-cols-2 gap-4">
-                {sectorLinks.map(link => (
-                    <DropdownMenuItem key={link.label} asChild>
-                        <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted cursor-pointer">
-                            {link.icon}
-                            <span>{link.label}</span>
-                        </Link>
-                    </DropdownMenuItem>
-                ))}
-            </div>
-        )
+    const getLinks = (type: 'sectors' | 'global' | 'investor' | 'about') => {
+        switch (type) {
+            case 'sectors': return sectorLinks;
+            case 'global': return globalLinks;
+            case 'investor': return investorLinks;
+            case 'about': return aboutLinks;
+            default: return [];
+        }
     }
-
-    const links = type === 'global' ? globalLinks : type === 'investor' ? investorLinks : aboutLinks;
+    const links = getLinks(type);
+    const isGrid = type === 'sectors';
 
     return (
-        <div className="w-64 p-2">
+        <div className={cn(isGrid ? "w-96 p-4 grid grid-cols-2 gap-4" : "w-64 p-2")}>
             {links.map(link => (
-                <DropdownMenuItem key={link.label} asChild>
-                    <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted cursor-pointer">
+                <Link key={link.label} href={link.href} passHref legacyBehavior>
+                    <DropdownMenuItem className="flex items-center gap-2 p-2 rounded-md hover:bg-muted cursor-pointer">
                         {link.icon}
                         <span>{link.label}</span>
-                    </Link>
-                </DropdownMenuItem>
+                    </DropdownMenuItem>
+                </Link>
             ))}
         </div>
     )
