@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -10,9 +10,6 @@ import Image from 'next/image';
 import SubNav from '@/components/layout/sub-nav';
 import Breadcrumb from '@/components/layout/breadcrumb';
 import { cn } from '@/lib/utils';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import type { CarouselApi } from "@/components/ui/carousel";
-
 
 const factories = [
   {
@@ -76,29 +73,7 @@ const insights = [
 ]
 
 export default function TeaFactoriesPage() {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
   const [selectedFactory, setSelectedFactory] = useState(factories[0]);
-
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-
-    setCurrent(api.selectedScrollSnap());
-
-    const onSelect = () => {
-      const selectedIndex = api.selectedScrollSnap();
-      setCurrent(selectedIndex);
-      setSelectedFactory(factories[selectedIndex]);
-    };
-
-    api.on("select", onSelect);
-
-    return () => {
-      api.off("select", onSelect);
-    };
-  }, [api]);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -134,28 +109,21 @@ export default function TeaFactoriesPage() {
 
         <Card className="mb-12">
             <CardContent className="p-6">
-                <Carousel setApi={setApi} className="w-full">
-                    <CarouselContent>
-                    {factories.map((factory, index) => (
-                        <CarouselItem key={index} className="basis-1/3 md:basis-1/5">
-                            <div className="p-1">
-                                <Button
-                                    variant="outline"
-                                    className={cn(
-                                        "w-full h-24 flex items-center justify-center p-2 border-2 transition-all",
-                                        index === current ? "border-primary scale-105 shadow-lg" : "border-transparent opacity-60 hover:opacity-100"
-                                    )}
-                                    onClick={() => api?.scrollTo(index)}
-                                >
-                                    <Image src={factory.logo} alt={`${factory.name} Logo`} width={100} height={40} className="object-contain" />
-                                </Button>
-                            </div>
-                        </CarouselItem>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    {factories.map((factory) => (
+                        <Button
+                            key={factory.name}
+                            variant="outline"
+                            className={cn(
+                                "w-full h-24 flex items-center justify-center p-2 border-2 transition-all",
+                                selectedFactory.name === factory.name ? "border-primary scale-105 shadow-lg" : "border-transparent opacity-60 hover:opacity-100"
+                            )}
+                            onClick={() => setSelectedFactory(factory)}
+                        >
+                            <Image src={factory.logo} alt={`${factory.name} Logo`} width={100} height={40} className="object-contain" />
+                        </Button>
                     ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="hidden md:flex" />
-                    <CarouselNext className="hidden md:flex" />
-                </Carousel>
+                </div>
             </CardContent>
         </Card>
 
