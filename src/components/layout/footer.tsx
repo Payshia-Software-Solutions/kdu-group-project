@@ -7,7 +7,7 @@ const companyLinks = [
     { href: "#", label: "Global" },
     { href: "#", label: "Community & Environment" },
     { href: "#", label: "Investor Relations" },
-    { href: "#", label: "About us" },
+    { href: "/about", label: "About us" },
     { href: "#", label: "News" },
     { href: "#", label: "Media" },
     { href: "#", label: "Careers" },
