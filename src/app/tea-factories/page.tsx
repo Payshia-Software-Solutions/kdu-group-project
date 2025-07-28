@@ -73,6 +73,49 @@ const insights = [
     }
 ]
 
+const galleryImages = [
+    {
+        alt: "Tea plucking in progress",
+        image: "https://placehold.co/600x400.png",
+        hint: "tea plucking workers"
+    },
+    {
+        alt: "Withering troughs at a tea factory",
+        image: "https://placehold.co/600x400.png",
+        hint: "tea withering"
+    },
+    {
+        alt: "Tea rolling machines",
+        image: "https://placehold.co/600x400.png",
+        hint: "tea rolling machine"
+    },
+    {
+        alt: "Fermentation room in a tea factory",
+        image: "https://placehold.co/600x400.png",
+        hint: "tea fermentation"
+    },
+    {
+        alt: "Tea drying equipment",
+        image: "https://placehold.co/600x400.png",
+        hint: "tea drying machine"
+    },
+    {
+        alt: "A master tea taster at work",
+        image: "https://placehold.co/600x400.png",
+        hint: "tea tasting expert"
+    },
+    {
+        alt: "Packaged tea ready for export",
+        image: "https://placehold.co/600x400.png",
+        hint: "tea packaging"
+    },
+    {
+        alt: "Lush green tea estate landscape",
+        image: "https://placehold.co/600x400.png",
+        hint: "tea estate landscape"
+    },
+]
+
 const stats = [
     {
         value: 10000,
@@ -216,6 +259,25 @@ export default function TeaFactoriesPage() {
                 </Card>
             ))}
           </div>
+        </section>
+        <section className="my-16 md:my-24">
+            <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold font-headline">Gallery</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {galleryImages.map((item, index) => (
+                    <div key={index} className="overflow-hidden rounded-lg group">
+                        <Image
+                            src={item.image}
+                            alt={item.alt}
+                            width={400}
+                            height={400}
+                            className="object-cover w-full h-full aspect-square group-hover:scale-105 transition-transform duration-300"
+                            data-ai-hint={item.hint}
+                        />
+                    </div>
+                ))}
+            </div>
         </section>
       </main>
       
