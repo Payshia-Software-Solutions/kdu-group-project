@@ -71,7 +71,7 @@ export function ImageGallery({ images }: ImageGalleryProps) {
               <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute top-4 right-4 z-50 text-white hover:bg-white/20 hover:text-white"
+                  className="absolute top-4 right-4 z-[60] text-white hover:bg-white/20 hover:text-white"
                   onClick={closeLightbox}
               >
                   <X className="h-8 w-8" />
