@@ -101,7 +101,7 @@ export function ImageGallery({ images }: ImageGalleryProps) {
                 </div>
                
 
-                <div className="relative z-50 w-full h-full flex items-center justify-center p-16">
+                <div className="relative z-50 w-full h-full flex items-center justify-center p-16" onClick={(e) => e.stopPropagation()}>
                     <Image
                         src={images[currentIndex].image}
                         alt={images[currentIndex].alt}
