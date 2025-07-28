@@ -8,7 +8,7 @@ const newsItems = [
   {
     title: "Empowering Communities",
     description: "Supporting local farmers with sustainable agricultural practices and microfinance solutions.",
-    image: "https://placehold.co/600x400.png",
+    image: "https://images.unsplash.com/photo-1724996871733-93a10302de11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb21tdW5pdHklMjBmYXJtaW5nfGVufDB8fHx8MTc1MzY5NjQ4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
     hint: "community farming",
     tag: "#DiviSaviya",
     href: "#",
@@ -16,7 +16,7 @@ const newsItems = [
   {
     title: "Education Initiative",
     description: "Providing scholarships and educational resources to underprivileged children across rural areas.",
-    image: "https://placehold.co/600x400.png",
+    image: "https://images.unsplash.com/photo-1574130303188-31a915382726?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaGlsZHJlbiUyMGNsYXNzcm9vbXxlbnwwfHx8fDE3NTM2OTY0ODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
     hint: "children classroom",
     tag: "#Education",
     href: "#",
@@ -24,7 +24,7 @@ const newsItems = [
   {
     title: "Small Business Growth",
     description: "Enabling entrepreneurs with accessible loans and business development support programs.",
-    image: "https://placehold.co/600x400.png",
+    image: "https://images.unsplash.com/photo-1594402919317-9e67dca0a305?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c21hbGwlMjBidXNpbmVzc3xlbnwwfHx8fDE3NTM2OTY0ODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
     hint: "small business",
     tag: "#SMEGrowth",
     href: "#",

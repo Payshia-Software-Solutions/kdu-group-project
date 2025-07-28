@@ -11,7 +11,6 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
         <Hero />
-        <div id="about" />
         <About />
         <Resort />
         <LatestNews />
