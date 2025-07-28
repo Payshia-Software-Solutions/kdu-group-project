@@ -20,7 +20,7 @@ const topNavLinks = [
   { href: "#", label: "Announcements" },
   { href: "#", label: "News" },
   { href: "#", label: "Media" },
-  { href: "#", label: "Careers" },
+  { href: "/careers", label: "Careers" },
   { href: "/sectors", label: "Group Structure" },
 ];
 
