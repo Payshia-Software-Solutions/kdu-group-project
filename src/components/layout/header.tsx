@@ -25,34 +25,18 @@ const topNavLinks = [
 ];
 
 const mainNavLinks = [
-    { href: "#", label: "Global", dropdown: 'global' },
+    { href: "/sectors/kdu-singapore", label: "Global" },
     { href: "/sectors", label: "Sectors", dropdown: 'sectors' },
     { href: "#", label: "Community & Environment" },
-    { href: "#", label: "Investor Relations", dropdown: 'investor' },
-    { href: "#", label: "About Us", dropdown: 'about' },
+    { href: "#", label: "Investor Relations" },
+    { href: "#", label: "About Us" },
     { href: "/contact", label: "Contact Us" },
 ];
 
-const globalLinks = [
-    {href: "/sectors/kdu-singapore", label: "KDU Singapore", icon: Globe},
-]
-
-const investorLinks = [
-    {href: "#", label: "Financials", icon: Briefcase},
-]
-
-const aboutLinks = [
-    {href: "#", label: "Our Story", icon: Info},
-]
-
-
-const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | 'about' }) => {
-    const getLinks = (type: 'sectors' | 'global' | 'investor' | 'about') => {
+const DropdownContent = ({ type }: { type: 'sectors' }) => {
+    const getLinks = (type: 'sectors') => {
         switch (type) {
             case 'sectors': return sectorLinks.map(l => ({...l, icon: l.icon}));
-            case 'global': return globalLinks;
-            case 'investor': return investorLinks;
-            case 'about': return aboutLinks;
             default: return [];
         }
     }
@@ -80,7 +64,7 @@ const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | '
 export default function Header() {
   const [isSheetOpen, setSheetOpen] = useState(false);
 
-  const NavLink = ({ link }: { link: typeof mainNavLinks[0] }) => {
+  const NavLink = ({ link }: { link: (typeof mainNavLinks)[0] & { dropdown?: 'sectors' } }) => {
     if (link.dropdown) {
       return (
         <DropdownMenu>
@@ -91,7 +75,7 @@ export default function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="mt-2">
-            <DropdownContent type={link.dropdown as any} />
+            <DropdownContent type={link.dropdown} />
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -106,15 +90,12 @@ export default function Header() {
     );
   };
 
-  const MobileNavLink = ({ link }: { link: typeof mainNavLinks[0] }) => {
+  const MobileNavLink = ({ link }: { link: (typeof mainNavLinks)[0] & { dropdown?: 'sectors' } }) => {
     const [isOpen, setIsOpen] = useState(false);
     
     const getLinks = (type: string | undefined) => {
         switch(type) {
             case 'sectors': return sectorLinks;
-            case 'global': return globalLinks;
-            case 'investor': return investorLinks;
-            case 'about': return aboutLinks;
             default: return [];
         }
     }
