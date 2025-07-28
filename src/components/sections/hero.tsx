@@ -29,8 +29,15 @@ export default function Hero() {
       <div className="relative z-20 container mx-auto px-4 md:px-6 h-full">
         <div className="grid md:grid-cols-2 h-full items-center gap-8">
           <div className="text-white text-left">
+            <Image 
+                src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" 
+                alt="KDU Group Logo" 
+                width={80} 
+                height={80} 
+                className="mb-4"
+            />
             <h1 className="text-5xl font-bold font-headline sm:text-6xl md:text-7xl drop-shadow-lg">
-              Imagine The Possibilities
+              Growing Ever Stronger
             </h1>
             <div className="mt-8">
               <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white font-bold h-auto px-6 py-4">
