@@ -1,9 +1,9 @@
 
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { useCountUp } from 'react-countup';
+import { useCountUp, type CountUpProps } from 'react-countup';
 
 type CounterProps = {
     end: number;
@@ -14,30 +14,43 @@ type CounterProps = {
 }
 
 export function Counter({ end, duration = 2, prefix = "", suffix = "", className }: CounterProps) {
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true,
   });
 
-  const { countUp, start, update } = useCountUp({
+  const countUpProps: CountUpProps = {
     start: 0,
     end,
     duration,
     prefix,
     suffix,
     separator: ",",
-  });
+  };
+
+  const { countUp, start, update } = useCountUp(countUpProps);
 
   useEffect(() => {
-    if (inView) {
+    if (inView && isMounted) {
       start();
     }
-  }, [inView, start]);
+  }, [inView, isMounted, start]);
   
   useEffect(() => {
-    update(end);
-  }, [end, update]);
+    if(isMounted) {
+        update(end);
+    }
+  }, [end, update, isMounted]);
 
+  if (!isMounted) {
+    return <span className={className}>{prefix}{end}{suffix}</span>;
+  }
 
   return <span ref={ref} className={className}>{countUp}</span>;
 }
