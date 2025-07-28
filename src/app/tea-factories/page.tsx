@@ -12,6 +12,7 @@ import Breadcrumb from '@/components/layout/breadcrumb';
 import { cn } from '@/lib/utils';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import type { CarouselApi } from "@/components/ui/carousel";
+import { Leaf, Users, ShieldCheck } from 'lucide-react';
 
 
 const factories = [
@@ -159,6 +160,45 @@ export default function TeaFactoriesPage() {
             </div>
           </div>
         </Card>
+
+        <section className="my-16 md:my-24">
+          <h2 className="text-3xl font-bold font-headline text-center mb-12 text-primary">Factory Insights</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="text-center hover:shadow-xl transition-shadow">
+              <CardHeader className="items-center">
+                <div className="bg-accent/20 p-4 rounded-full mb-2">
+                    <Leaf className="w-8 h-8 text-primary" />
+                </div>
+                <CardTitle className="font-headline">Sustainable Practices</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Our factories are committed to environmentally friendly practices, from water conservation to waste management.</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center hover:shadow-xl transition-shadow">
+              <CardHeader className="items-center">
+                <div className="bg-accent/20 p-4 rounded-full mb-2">
+                    <Users className="w-8 h-8 text-primary" />
+                </div>
+                <CardTitle className="font-headline">Community Impact</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">We are proud to be a major employer in the regions we operate, empowering local communities.</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center hover:shadow-xl transition-shadow">
+              <CardHeader className="items-center">
+                <div className="bg-accent/20 p-4 rounded-full mb-2">
+                    <ShieldCheck className="w-8 h-8 text-primary" />
+                </div>
+                <CardTitle className="font-headline">Quality Assurance</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Stringent quality control at every stage of production ensures the finest quality tea for our customers.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
 
       </main>
       <Footer />
