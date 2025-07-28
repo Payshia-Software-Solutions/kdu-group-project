@@ -59,7 +59,7 @@ const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | '
             <div className="w-96 p-4 grid grid-cols-2 gap-4">
                 {sectorLinks.map(link => (
                     <DropdownMenuItem key={link.label} asChild>
-                        <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted">
+                        <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted cursor-pointer">
                             {link.icon}
                             <span>{link.label}</span>
                         </Link>
@@ -75,7 +75,7 @@ const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | '
         <div className="w-64 p-2">
             {links.map(link => (
                 <DropdownMenuItem key={link.label} asChild>
-                    <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted">
+                    <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted cursor-pointer">
                         {link.icon}
                         <span>{link.label}</span>
                     </Link>
