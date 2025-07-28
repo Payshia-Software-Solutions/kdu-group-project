@@ -29,7 +29,7 @@ const mainNavLinks = [
     { href: "/sectors", label: "Sectors", dropdown: 'sectors' },
     { href: "#", label: "Community & Environment" },
     { href: "#", label: "Investor Relations" },
-    { href: "#", label: "About Us" },
+    { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact Us" },
 ];
 
