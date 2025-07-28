@@ -16,14 +16,15 @@ const sectors = [
 export default function Hero() {
   return (
     <section id="home" className="relative h-screen w-full flex items-center justify-center">
-      <Image
-        src="https://placehold.co/1920x1080.png"
-        alt="Man holding phone with QR code"
-        layout="fill"
-        objectFit="cover"
-        className="absolute inset-0 z-0"
-        data-ai-hint="man phone"
-      />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 z-0 w-full h-full object-cover"
+      >
+        <source src="https://content-provider.payshia.com/kdu-group/hero-video.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-black/60 z-10"></div>
       <div className="relative z-20 container mx-auto px-4 md:px-6 h-full">
         <div className="grid md:grid-cols-2 h-full items-center">
