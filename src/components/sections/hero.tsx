@@ -15,7 +15,7 @@ const sectors = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative w-full flex items-center justify-center h-[calc(100vh-112px)]">
+    <section id="home" className="relative w-full flex items-center justify-center min-h-[calc(100vh-112px)] py-8">
       <video
         autoPlay
         loop
@@ -27,7 +27,7 @@ export default function Hero() {
       </video>
       <div className="absolute inset-0 bg-black/40 z-10"></div>
       <div className="relative z-20 container mx-auto px-4 md:px-6 h-full">
-        <div className="grid md:grid-cols-2 h-full items-center">
+        <div className="grid md:grid-cols-2 h-full items-center gap-8">
           <div className="text-white text-left">
             <div className="mb-4">
                 <Image src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" alt="KDU Group Logo" width={100} height={100} />
@@ -57,9 +57,19 @@ export default function Hero() {
             ))}
           </div>
         </div>
+
+        {/* Mobile-only sector grid */}
+        <div className="md:hidden grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
+            {sectors.slice(0, 6).map((sector) => ( // show first 6 for a cleaner mobile look
+                <Link key={sector.name} href={sector.href}>
+                    <div className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center text-center text-white aspect-square hover:bg-black/50 transition-colors cursor-pointer h-full">
+                        <div className="mb-2">{sector.icon}</div>
+                        <p className="font-semibold text-xs">{sector.name}</p>
+                    </div>
+                </Link>
+            ))}
+        </div>
       </div>
     </section>
   );
 }
-
-    
