@@ -29,19 +29,19 @@ export default function Hero() {
       <div className="relative z-20 container mx-auto px-4 md:px-6 h-full">
         <div className="grid md:grid-cols-2 h-full items-center gap-8">
           <div className="text-white text-left">
-            <div className="mb-4">
-                <Image src="http://content-provider.payshia.com/kdu-group/KDU-group.webp" alt="KDU Group Logo" width={100} height={100} />
-            </div>
             <h1 className="text-5xl font-bold font-headline sm:text-6xl md:text-7xl drop-shadow-lg">
-              KDU GROUP
+              Imagine The Possibilities
             </h1>
-            <div className="mt-8 flex flex-col items-start gap-4">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white font-bold h-14 pr-2">
-                <Link href="#about" className="flex items-center gap-4">
-                  <span>Explore Our Corporate Profile</span>
-                  <span className="bg-black/20 rounded-full p-2">
-                    <HelpCircle className="h-6 w-6" />
-                  </span>
+            <div className="mt-8">
+              <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white font-bold h-auto px-6 py-4">
+                <Link href="#about" className="flex flex-col items-start">
+                    <div className="w-full flex justify-end">
+                        <span className="bg-white/20 rounded-full p-2 mb-4">
+                            <ArrowRight className="h-6 w-6" />
+                        </span>
+                    </div>
+                    <span className="text-lg">Explore Our</span>
+                    <span className="text-lg">Corporate Profile</span>
                 </Link>
               </Button>
             </div>
