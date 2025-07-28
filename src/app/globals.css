@@ -60,4 +60,15 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Responsive font size */
+  html {
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
 }
