@@ -70,12 +70,12 @@ const DropdownContent = ({ type }: { type: 'sectors' | 'global' | 'investor' | '
     return (
         <div className={cn(isGrid ? "w-96 p-4 grid grid-cols-2 gap-4" : "w-64 p-2")}>
             {links.map(link => (
-                <Link key={link.label} href={link.href} passHref legacyBehavior>
-                    <DropdownMenuItem className="flex items-center gap-2 p-2 rounded-md hover:bg-muted cursor-pointer">
+                <DropdownMenuItem key={link.label} asChild className="p-0">
+                    <Link href={link.href} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted cursor-pointer w-full">
                         {link.icon}
                         <span>{link.label}</span>
-                    </DropdownMenuItem>
-                </Link>
+                    </Link>
+                </DropdownMenuItem>
             ))}
         </div>
     )
