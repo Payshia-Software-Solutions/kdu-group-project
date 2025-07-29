@@ -1,16 +1,17 @@
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, HelpCircle, Building2, Utensils, Droplet, Zap, Gem, Globe, Factory } from "lucide-react";
 
 const sectors = [
-    { name: "TEA FACTORIES", icon: <Factory />, href: "/sectors/tea-factories" },
-    { name: "HOSPITALITY", icon: <Utensils />, href: "/sectors/hospitality" },
-    { name: "PETROLEUM", icon: <Droplet />, href: "/sectors/petroleum" },
-    { name: "HYDRO POWER", icon: <Zap />, href: "/sectors/hydro-power" },
-    { name: "KDU SINGAPORE", icon: <Globe />, href: "/sectors/kdu-singapore" },
-    { name: "GEM MINING", icon: <Gem />, href: "/sectors/gem-mining" },
-    { name: "RETAIL MANUFACTURE AND TRADING", icon: <Building2 />, href: "/sectors/retail" },
+    { name: "TEA FACTORIES", icon: <Factory className="w-6 h-6" />, href: "/sectors/tea-factories" },
+    { name: "HOSPITALITY", icon: <Utensils className="w-6 h-6" />, href: "/sectors/hospitality" },
+    { name: "PETROLEUM", icon: <Droplet className="w-6 h-6" />, href: "/sectors/petroleum" },
+    { name: "HYDRO POWER", icon: <Zap className="w-6 h-6" />, href: "/sectors/hydro-power" },
+    { name: "KDU SINGAPORE", icon: <Globe className="w-6 h-6" />, href: "/sectors/kdu-singapore" },
+    { name: "GEM MINING", icon: <Gem className="w-6 h-6" />, href: "/sectors/gem-mining" },
+    { name: "RETAIL MANUFACTURE AND TRADING", icon: <Building2 className="w-6 h-6" />, href: "/sectors/retail" },
 ];
 
 export default function Hero() {
@@ -50,12 +51,12 @@ export default function Hero() {
               </Button>
             </div>
           </div>
-          <div className="hidden md:grid grid-cols-3 gap-4">
+          <div className="hidden md:flex flex-col gap-3">
             {sectors.map((sector) => (
               <Link key={sector.name} href={sector.href}>
-                <div className="group bg-black/30 backdrop-blur-sm border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center text-center text-white aspect-square hover:bg-white hover:text-primary transition-colors cursor-pointer h-full">
-                  <div className="mb-2 text-white group-hover:text-primary transition-colors">{sector.icon}</div>
-                  <p className="font-semibold text-sm">{sector.name}</p>
+                <div className="group bg-black/30 backdrop-blur-sm border border-white/20 rounded-lg p-3 flex items-center gap-4 text-white hover:bg-white/10 transition-colors cursor-pointer">
+                  <div className="text-white">{sector.icon}</div>
+                  <p className="font-semibold text-sm tracking-wider">{sector.name}</p>
                 </div>
               </Link>
             ))}

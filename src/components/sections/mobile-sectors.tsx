@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Building2, Utensils, Droplet, Zap, Gem, Globe, Factory } from "lucide-react";
 
