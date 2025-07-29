@@ -24,7 +24,7 @@ const sectors = [
     ],
   },
   {
-    name: "Petrolium",
+    name: "Petroleum",
     icon: <Fuel className="w-6 h-6 text-primary" />,
     subItems: ["K.D.U. & SONS FILLING STATION", "K.D.U. FUEL MART"],
   },
@@ -32,6 +32,11 @@ const sectors = [
     name: "Hydro Power",
     icon: <Zap className="w-6 h-6 text-primary" />,
     subItems: ["K.D.U. MINI HYDRO"],
+  },
+  {
+    name: "Gem Mining",
+    icon: <Gem className="w-6 h-6 text-primary" />,
+    subItems: ["K.D.U. Gem and Jewellery"],
   },
   {
     name: "KDU Exports",
