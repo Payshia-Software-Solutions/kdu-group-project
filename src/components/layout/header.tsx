@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -27,8 +26,6 @@ const topNavLinks = [
 const mainNavLinks = [
     { href: "/sectors/kdu-singapore", label: "Global" },
     { href: "/sectors", label: "Sectors", dropdown: 'sectors' },
-    { href: "/community-environment", label: "Community & Environment" },
-    { href: "#", label: "Investor Relations" },
     { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact Us" },
 ];
