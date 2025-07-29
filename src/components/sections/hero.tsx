@@ -5,19 +5,19 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Landmark, X, ChevronUp } from "lucide-react";
+import { ArrowRight, X, ChevronUp, Factory, Utensils, Fuel, Zap, Gem, Building2, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { sectorLinks } from "@/lib/sector-data";
 import { cn } from "@/lib/utils";
 
 const desktopSectors = [
-    { name: "TEA FACTORIES", icon: <Landmark className="w-8 h-8" />, href: "/sectors/tea-factories" },
-    { name: "HOSPITALITY", icon: <Landmark className="w-8 h-8" />, href: "/sectors/hospitality" },
-    { name: "PETROLEUM", icon: <Landmark className="w-8 h-8" />, href: "/sectors/petroleum" },
-    { name: "HYDRO POWER", icon: <Landmark className="w-8 h-8" />, href: "/sectors/hydro-power" },
-    { name: "GEM MINING", icon: <Landmark className="w-8 h-8" />, href: "/sectors/gem-mining" },
-    { name: "RETAIL MANUFACTURE AND TRADING", icon: <Landmark className="w-8 h-8" />, href: "/sectors/retail" },
-    { name: "GLOBAL", icon: <Landmark className="w-8 h-8" />, href: "/sectors/kdu-singapore" },
+    { name: "TEA FACTORIES", icon: <Factory className="w-8 h-8" />, href: "/sectors/tea-factories" },
+    { name: "HOSPITALITY", icon: <Utensils className="w-8 h-8" />, href: "/sectors/hospitality" },
+    { name: "PETROLEUM", icon: <Fuel className="w-8 h-8" />, href: "/sectors/petroleum" },
+    { name: "HYDRO POWER", icon: <Zap className="w-8 h-8" />, href: "/sectors/hydro-power" },
+    { name: "GEM MINING", icon: <Gem className="w-8 h-8" />, href: "/sectors/gem-mining" },
+    { name: "RETAIL MANUFACTURE AND TRADING", icon: <Building2 className="w-8 h-8" />, href: "/sectors/retail" },
+    { name: "GLOBAL", icon: <Globe className="w-8 h-8" />, href: "/sectors/kdu-singapore" },
 ];
 
 export default function Hero() {
@@ -64,7 +64,7 @@ export default function Hero() {
               <Link key={sector.name} href={sector.href} className="w-full max-w-sm">
                 <div className="group bg-black/30 backdrop-blur-sm border border-white/20 rounded-lg p-3 flex items-center gap-4 text-white hover:bg-white hover:text-primary transition-colors cursor-pointer">
                   <div className="text-white group-hover:text-primary transition-colors">{sector.icon}</div>
-                  <p className="font-semibold text-sm tracking-wider">{sector.name}</p>
+                  <p className="font-semibold text-sm tracking-wider uppercase">{sector.name}</p>
                 </div>
               </Link>
             ))}
