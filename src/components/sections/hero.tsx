@@ -5,19 +5,19 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Factory, Utensils, Droplet, Zap, Gem, Globe, Building2, Ship, X, ChevronUp } from "lucide-react";
+import { ArrowRight, Landmark, X, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { sectorLinks } from "@/lib/sector-data";
 import { cn } from "@/lib/utils";
 
 const desktopSectors = [
-    { name: "TEA FACTORIES", icon: <Factory className="w-6 h-6" />, href: "/sectors/tea-factories" },
-    { name: "HOSPITALITY", icon: <Utensils className="w-6 h-6" />, href: "/sectors/hospitality" },
-    { name: "PETROLEUM", icon: <Droplet className="w-6 h-6" />, href: "/sectors/petroleum" },
-    { name: "HYDRO POWER", icon: <Zap className="w-6 h-6" />, href: "/sectors/hydro-power" },
-    { name: "KDU SINGAPORE", icon: <Globe className="w-6 h-6" />, href: "/sectors/kdu-singapore" },
-    { name: "GEM MINING", icon: <Gem className="w-6 h-6" />, href: "/sectors/gem-mining" },
-    { name: "RETAIL MANUFACTURE AND TRADING", icon: <Building2 className="w-6 h-6" />, href: "/sectors/retail" },
+    { name: "TEA FACTORIES", icon: <Landmark className="w-8 h-8" />, href: "/sectors/tea-factories" },
+    { name: "HOSPITALITY", icon: <Landmark className="w-8 h-8" />, href: "/sectors/hospitality" },
+    { name: "PETROLEUM", icon: <Landmark className="w-8 h-8" />, href: "/sectors/petroleum" },
+    { name: "HYDRO POWER", icon: <Landmark className="w-8 h-8" />, href: "/sectors/hydro-power" },
+    { name: "GEM MINING", icon: <Landmark className="w-8 h-8" />, href: "/sectors/gem-mining" },
+    { name: "RETAIL MANUFACTURE AND TRADING", icon: <Landmark className="w-8 h-8" />, href: "/sectors/retail" },
+    { name: "GLOBAL", icon: <Landmark className="w-8 h-8" />, href: "/sectors/kdu-singapore" },
 ];
 
 export default function Hero() {
@@ -59,11 +59,11 @@ export default function Hero() {
               </Button>
             </div>
           </div>
-          <div className="hidden md:flex flex-col gap-3">
+          <div className="hidden md:flex flex-col gap-3 items-end">
             {desktopSectors.map((sector) => (
-              <Link key={sector.name} href={sector.href}>
-                <div className="group bg-black/30 backdrop-blur-sm border border-white/20 rounded-lg p-3 flex items-center gap-4 text-white hover:bg-white/10 transition-colors cursor-pointer">
-                  <div className="text-white">{sector.icon}</div>
+              <Link key={sector.name} href={sector.href} className="w-full max-w-sm">
+                <div className="group bg-black/30 backdrop-blur-sm border border-white/20 rounded-lg p-3 flex items-center gap-4 text-white hover:bg-white hover:text-primary transition-colors cursor-pointer">
+                  <div className="text-white group-hover:text-primary transition-colors">{sector.icon}</div>
                   <p className="font-semibold text-sm tracking-wider">{sector.name}</p>
                 </div>
               </Link>
