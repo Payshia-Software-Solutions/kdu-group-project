@@ -7,7 +7,6 @@ import Hero from '@/components/sections/hero';
 import About from '@/components/sections/about';
 import Resort from '@/components/sections/resort';
 import LatestNews from '@/components/sections/latest-news';
-import MobileSectors from '@/components/sections/mobile-sectors';
 import { MotionDiv } from '@/components/ui/motion';
 
 export default function Home() {
@@ -17,9 +16,6 @@ export default function Home() {
       <main className="flex-grow overflow-x-hidden">
           <MotionDiv direction="left">
             <Hero />
-          </MotionDiv>
-          <MotionDiv direction="right">
-            <MobileSectors />
           </MotionDiv>
           <MotionDiv direction="left">
             <About />
