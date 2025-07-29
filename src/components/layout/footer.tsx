@@ -1,14 +1,13 @@
+
 import { Facebook, Twitter, Linkedin, Phone, Mail, Instagram, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const companyLinks = [
-    { href: "#", label: "Global" },
     { href: "/about", label: "About us" },
-    { href: "#", label: "News" },
-    { href: "#", label: "Media" },
-    { href: "#", label: "Careers" },
+    { href: "/achievements", label: "Achievements" },
+    { href: "/careers", label: "Careers" },
     { href: "/contact", label: "Contact Us" },
 ];
 

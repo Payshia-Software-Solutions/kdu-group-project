@@ -1,8 +1,9 @@
+
 "use client";
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ChevronDown, Briefcase, Info, GitMerge, Globe, Landmark } from "lucide-react";
+import { Menu, X, ChevronDown, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -24,9 +25,10 @@ const topNavLinks = [
 ];
 
 const mainNavLinks = [
-    { href: "/sectors/kdu-singapore", label: "Global" },
-    { href: "/sectors", label: "Sectors", dropdown: 'sectors' },
+    { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
+    { href: "/sectors", label: "Sectors", dropdown: 'sectors' },
+    { href: "/achievements", label: "Achievements" },
     { href: "/contact", label: "Contact Us" },
 ];
 
